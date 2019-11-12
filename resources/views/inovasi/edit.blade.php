@@ -49,6 +49,7 @@
                             <legend class="w-auto"><h5>Inovasi</h5></legend>
                             <!-- BEGIN::Nama Inovasi -->
                             <div class="form-group">
+                                <input type="hidden" name="id_inovasi" value="{{$inovasi->id}}">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <label for="namaInovasi">Nama Singkat Inovasi</label>
@@ -130,7 +131,7 @@
                                     </div>
                                     <div class="col-md-6" style="min-height: 200px;">
                                         <label for="date">Tahun Anggaran</label>
-                                        <input type="text" class="form-control datetimepicker-input" id="datepicker" value="{{$inovasi->date}}" data-toggle="datetimepicker" data-target="#datepicker">
+                                        <input type="text" class="form-control datetimepicker-input" id="datepicker" value="{{$inovasi->date}}" data-toggle="datetimepicker" data-target="#datepicker" name="date">
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +139,7 @@
                             </fieldset>
 
                             <!-- BEGIN::Tombol Simpan & Ulang -->
-                            <button type="submit" class="btn btn-primary btn-lg btn-block mt-4 mb-4">SIMPAN DATA</button>
+                            <button type="submit" name="master_inovasi" class="btn btn-primary btn-lg btn-block mt-4 mb-4">SIMPAN DATA</button>
                             <!-- BEGIN::Tombol Simpan & Ulang -->
                         </form>
                     </div>
@@ -198,7 +199,7 @@
                             <!-- END::Tahapan Inovasi -->
 
                             <!-- BEGIN::Tombol Simpan & Ulang -->
-                            <button type="submit" class="btn btn-primary btn-lg btn-block mt-4 mb-4">SIMPAN DATA</button>
+                            <button type="submit" name="step_inovasi" class="btn btn-primary btn-lg btn-block mt-4 mb-4">SIMPAN DATA</button>
                             <!-- BEGIN::Tombol Simpan & Ulang -->
                         </form>
                     </div>

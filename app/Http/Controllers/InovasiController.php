@@ -60,22 +60,45 @@ class InovasiController extends Controller
                 ->get();
         return view('inovasi.edit', compact('inovasi','step'));
     }
+
+    
     public function store(Request $request){
-        for($i=0;$i<=5;$i++){
-            if($request->keterangan[$i]==NULL){
-                $step = Innovation_step::find($request->id_step[$i]);
-                $step->progress_persentage = $request->progress_inovasi[$i];
-                $step->explaination = '';
-                $step->save();
+
+        if(isset($_POST['master_inovasi'])){
+            // dd($request->all());
+            $data = Innovation::where('id', $request->id_inovasi)->update([
+                'name' => $request->innovation,                
+                'description' => $request->description,
+                'benefit' => $request->benefit,
+                'unique_creativity' => $request->unique_creativity,
+                'potency' => $request->potency,
+                'strategy' => $request->strategy,
+                'risk_analysis' => $request->risk_analysis,
+                'resource' => $request->resource,
+                'date' => $request->date
+                ]);
+
+            return redirect('inovasi')->with('status', 'Data Inovasi Berhasil Diubah');
+        }elseif(isset($_POST['step_inovasi'])){
+            // dd($request->all());
+            for($i=0;$i<=5;$i++){
+                if($request->keterangan[$i]==NULL){
+                    $step = Innovation_step::find($request->id_step[$i]);
+                    $step->progress_persentage = $request->progress_inovasi[$i];
+                    $step->explaination = '';
+                    $step->save();
+                }
+                else{
+                    $step = Innovation_step::find($request->id_step[$i]);
+                    $step->progress_persentage = $request->progress_inovasi[$i];
+                    $step->explaination = $request->keterangan[$i];
+                    $step->save();
+                }
             }
-            else{
-                $step = Innovation_step::find($request->id_step[$i]);
-                $step->progress_persentage = $request->progress_inovasi[$i];
-                $step->explaination = $request->keterangan[$i];
-                $step->save();
-            }
+            return redirect('inovasi')->with('status', 'Data Tahapan Inovasi Berhasil Diubah');
         }
-        return redirect('inovasi')->with('status', 'Data Inovasi Berhasil Diubah');
+
+        
     }
     public function search(Request $request){
         $cari_global = $request->cari_global;

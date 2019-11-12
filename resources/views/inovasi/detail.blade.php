@@ -123,7 +123,7 @@
                                     <th scope="row"><?php echo "$no"; ?></th>
                                     <td>{{$ino_step->step->name}}</td>
                                     <td>{{$ino_step->progress_persentage}}</td>
-                                    <td>File</td>
+                                    <td><img src=""></td>
                                     <td>{{$ino_step->explaination}}</td>
                                 </tr>
                                 <?php $no = $no +1 ?>

@@ -27,8 +27,7 @@ class InovasiController extends Controller
         $ino_steps = Innovation_step::with('innovation')
         ->where('progress_persentage', '>', '0')
         ->where('progress_persentage', '<', '100')
-        ->paginate($request->advanced_table_length);
-        // dd($inovasi);
+        ->get();
         return view('inovasi.index', compact('ino_steps'));
     }
 
@@ -61,13 +60,13 @@ class InovasiController extends Controller
         return view('inovasi.edit', compact('inovasi','step'));
     }
 
-    
+
     public function store(Request $request){
 
         if(isset($_POST['master_inovasi'])){
             // dd($request->all());
             $data = Innovation::where('id', $request->id_inovasi)->update([
-                'name' => $request->innovation,                
+                'name' => $request->innovation,
                 'description' => $request->description,
                 'benefit' => $request->benefit,
                 'unique_creativity' => $request->unique_creativity,
@@ -98,7 +97,7 @@ class InovasiController extends Controller
             return redirect('inovasi')->with('status', 'Data Tahapan Inovasi Berhasil Diubah');
         }
 
-        
+
     }
     public function search(Request $request){
         $cari_global = $request->cari_global;
@@ -114,5 +113,5 @@ class InovasiController extends Controller
             ->where('date', 'like', "%".$cari_bulan."%")
             ->paginate();
     }
-    
+
 }

@@ -96,19 +96,20 @@ class UserController extends Controller
 
     public function update($id,Request $request)
     {
-
         $users = User::find($id);
         $users->name = $request->name;
+        $users->password = Hash::make($request->password);
         $users->email = $request->email;
         $users->role_id = $request->role_id;
         $users->save();
+
 
         $details = Users_Detail::find($users->user_id);
 
         $details->name = $request->name;
         $details->nik = $request->nik;
         $details->nip = $request->nip;
-        $details->phone =  $request->phone; 
+        $details->phone =  $request->phone;
         $details->gender =$request->gender;
         $details->address = $request->address;
         $details->institute_id = $request->institute_id;

@@ -43,10 +43,9 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="lastname">Email</label>
-                                        <input type="email" class="form-control" placeholder="ex: scinovasi@gmail.com" name="email" id="email">
+                                        <input type="email" class="form-control" placeholder="Ex: scinovasi@gmail.com" name="email" id="email">
                                     </div>
                                 </div>
-                                <br>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="password">Password</label>
@@ -57,15 +56,14 @@
                                         <input type="password" class="form-control" placeholder="Ulangi Password" name="repassword" id="repassword"></input>
                                     </div>
                                 </div>
-                                <br>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="nik">NIK</label>
-                                        <input type="text" class="form-control" placeholder="Masukan NIK" name="nik" id="nik"></input>
+                                        <input type="text" class="form-control" placeholder="Masukkan NIK" name="nik" id="nik"></input>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="nip">NIP</label>
-                                        <input type="text" class="form-control" placeholder="Maukkan NIP" name="nip" id="nip"></input>
+                                        <input type="text" class="form-control" placeholder="Masukkan NIP" name="nip" id="nip"></input>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="role">Role</label>
@@ -77,11 +75,10 @@
                                             </select>
                                     </div>
                                 </div>
-                                <br>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="telepon">Nomor Telepon</label>
-                                        <input type="text" class="form-control" name="phone" placeholder="ex:081388932778 atau ex:0215679987" name="telepon" id="telepon"></input>
+                                        <input type="text" class="form-control" name="phone" placeholder="Ex: 081388932778" name="telepon" id="telepon"></input>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="role">Perangkat Daerah</label>
@@ -106,14 +103,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="alamat">Alamat</label>
-                                        <textarea name="address" name="alamat" rows="5" class="form-control" id="alamat"></textarea>
+                                        <textarea name="address" name="alamat" placeholder="Masukkan alamat" class="form-control" id="alamat"></textarea>
                                     </div>
                                 </div>
-                                <br>
                                 <button class="btn btn-success" type="submit">Simpan</button>
                             </form>
                         </div>
@@ -121,7 +116,6 @@
                 </div>
             </div>
             <!-- END::Tabel Data Users -->
-
         </div>
     </div>
 <!-- END::Konten Utama -->

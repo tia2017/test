@@ -35,16 +35,14 @@
                      <div class="tab-pane fade show active " id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
                         <div class="card-body">
                             <form class="form-horizontal" method="post" action="/roles/store">
-                                {{ csrf_field() }}                          
+                                {{ csrf_field() }}
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="firstname">Nama Roles</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan Nama Role" name="name" id="name">
-                                        @if($errors->has('name'))
-                                            <div class="text-danger">
-                                                {{ $errors->first('name')}}
-                                            </div>
-                                        @endif
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama Role" name="name" id="name">
+                                        @error('name')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button class="btn btn-success" type="submit">Simpan</button>
@@ -52,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <!-- END::Tabel Data Users -->
 
         </div>

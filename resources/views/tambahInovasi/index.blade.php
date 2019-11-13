@@ -55,11 +55,11 @@
                 @endif                        -->
 
                     <div class="col-md-12">
-                        <form class="forms-sample" action="/tambah-inovasi" method="post" enctype='multipart/form-data'>                    
-                        <input type="hidden" name="created_by" value="{{Base64_decode(Session::get('id'))}}">        
-                        <!-- <input type="hidden" name="created_by" value="3">         -->
-                        <input type="hidden" name="verification_status" value="True">     
-                        <input type="hidden" name="date" value="{{date('Y-m-d h:i:s')}}">                   
+                        <form class="forms-sample" action="/tambah-inovasi" method="post" enctype='multipart/form-data'>
+                        <!-- <input type="hidden" name="created_by" value="{{Session::get('id')}}">         -->
+                        <input type="hidden" name="created_by" value="3">
+                        <input type="hidden" name="verification_status" value="True">
+                        <input type="hidden" name="date" value="{{date('Y-m-d h:i:s')}}">
                         {{ csrf_field() }}
 
                             <fieldset class="border p-2 mt-1 mb-3">
@@ -245,16 +245,16 @@
                                         <!-- Repeater Html Start -->
                                         <div id="repeater">
                                         <!-- Key Array Form Repeater keperluan validate jika gagal agar tidak ketik ulang value -->
-                                        <input type="text" class="keyFormMitra" name="keyFormMitra" value="{{old('keyFormMitra')}}" hidden>    
+                                        <input type="text" class="keyFormMitra" name="keyFormMitra" value="{{old('keyFormMitra')}}" hidden>
                                         <?php
                                             $keyFormMitra = old('keyFormMitra');
                                             if($keyFormMitra != null){
-                                                $key = old('keyFormMitra')+1;                                                           
+                                                $key = old('keyFormMitra')+1;
                                             }else{
-                                                $key = 1;                                                        
-                                            }                                                                               
-                                        ?> 
-                                        
+                                                $key = 1;
+                                            }
+                                        ?>
+
                                             <!-- Repeater Heading -->
                                             <div class="repeater-heading">
                                                 <!-- <h5 class="float-left">Kemitraan</h5> -->
@@ -264,15 +264,15 @@
                                             </div>
                                             <div class="clearfix"></div>
                                             <!-- Repeater Items -->
-                                            
+
                                             @for ($i=0; $i < $key; $i++)
                                             <div class="items" data-group="Mitra">
-                                            <!-- Repeater Content -->                          
-                                                <div class="item-content">                     
+                                            <!-- Repeater Content -->
+                                                <div class="item-content">
                                                     <div class="form-group">
                                                         <label for="bentukMitra" class="col-lg-2 col-md-2 control-label">Bentuk Mitra</label>
                                                         <div class="col-lg-10 col-md-10">
-                                                            <input type="text" class="form-control @error('Mitra.*.Bentuk') is-invalid @enderror" id="bentukMitra" placeholder="Bentuk Mitra yang Melakukan Kerjasama" data-name="Bentuk" value="{{old('Mitra.'.$i.'.Bentuk') }}"  >                    
+                                                            <input type="text" class="form-control @error('Mitra.*.Bentuk') is-invalid @enderror" id="bentukMitra" placeholder="Bentuk Mitra yang Melakukan Kerjasama" data-name="Bentuk" value="{{old('Mitra.'.$i.'.Bentuk') }}"  >
                                                             @error('Mitra.*.Bentuk')
                                                                 <div class="invalid-feedback">{{$message}}</div>
                                                             @enderror
@@ -339,7 +339,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- END::Mitra Inovasi -->
                             </fieldset>
 

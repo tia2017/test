@@ -47,7 +47,16 @@
                                         <input type="email" value="{{ $df_user[0]->email }}" class="form-control" placeholder="ex: scinovasi@gmail.com" name="email" id="email">
                                     </div>
                                 </div>
-                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" placeholder="Masukkan Password baru" name="password" id="password">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="repassword">Ulangi Password</label>
+                                        <input type="password" class="form-control" placeholder="Ulangi Password baru" name="repassword" id="repassword">
+                                    </div>
+                                </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="nik">NIK</label>
@@ -67,7 +76,6 @@
                                             </select>
                                     </div>
                                 </div>
-                                <br>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="telepon">Nomor Telepon</label>
@@ -84,7 +92,7 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="gender" >Jenis Kelamin</label>
-                                        <div class="form-row">
+                                        <div class="form-row" style="margin-left:1px;margin-top:6px">
                                             <div class="form-check form-check-inline">
                                                 <input {{ $df_user[0]->gender == 'laki-laki' ? 'checked="checked"' : '' }}  class="form-check-input" type="radio" name="gender" id="gender" value="laki-laki">
                                                 <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
@@ -96,14 +104,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                        <textarea name="address" name="alamat" rows="5" class="form-control" id="alamat">{{ $df_user[0]->address }}</textarea>
                                         <label for="alamat">Alamat</label>
+                                        <textarea name="address" name="alamat" rows="5" class="form-control" id="alamat">{{ $df_user[0]->address }}</textarea>
                                     </div>
                                 </div>
-                                <br>
                                 <button class="btn btn-success" type="submit">Simpan</button>
                             </form>
                         </div>

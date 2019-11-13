@@ -9,7 +9,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-bar-chart-2 bg-blue"></i>
                         <div class="d-inline">
-                            <h5>Dashboard</h5>
+                            <h5>Dasbor</h5>
                             <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
 
         <!-- BEGIN::Informasi Statistik Global -->
         <div class="row clearfix">
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="widget">
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
@@ -39,26 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="widget">
-                    <div class="widget-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="state">
-                                <h2>11</h2>
-                                <h6>Usulan Inovasi</h6>
-                            </div>
-                            <div class="icon">
-                                <i class="ik ik-thumbs-up"></i>
-                            </div>
-                        </div>
-                        <small class="text-small mt-10 d-block">Dari Dewan Smart City</small>
-                    </div>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="widget">
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
@@ -74,25 +55,6 @@
                     </div>
                     <div class="progress progress-sm">
                         <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100" style="width: 31%;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="widget">
-                    <div class="widget-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="state">
-                                <h2>50</h2>
-                                <h6>Usulan</h6>
-                            </div>
-                            <div class="icon">
-                                <i class="ik ik-target"></i>
-                            </div>
-                        </div>
-                        <small class="text-small mt-10 d-block">Telah Selesai 100%</small>
-                    </div>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>
                     </div>
                 </div>
             </div>
@@ -120,7 +82,7 @@
                                     <div class="col-2 text-right">28%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-green" role="progressbar" style="width: 48%" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-green" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +91,7 @@
                                     <div class="col-2 text-right">21%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-aqua" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-aqua" role="progressbar" style="width: 21%" aria-valuenow="21" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +100,7 @@
                                     <div class="col-2 text-right">18%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-purple" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-purple" role="progressbar" style="width: 18%" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -147,25 +109,25 @@
                                     <div class="col-2 text-right">12%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-15">
                                     <div class="col-4">Implementasi</div>
-                                    <div class="col-2 text-right">12%</div>
+                                    <div class="col-2 text-right">55%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-yellow" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-4">Evaluasi</div>
-                                    <div class="col-2 text-right">12%</div>
+                                    <div class="col-2 text-right">73%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-grey" role="progressbar" style="width: 73%" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>

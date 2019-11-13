@@ -15,7 +15,7 @@ BEGIN::Menu Utama -->
                 <nav id="main-menu-navigation" class="navigation-main">
                     <div class="nav-lavel">Navigasi</div>
                     <div class="nav-item active">
-                        <a href="dashboard"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
+                        <a href="dashboard"><i class="ik ik-bar-chart-2"></i><span>Dasbor</span></a>
                     </div>
                     <div class="nav-item has-sub">
                         <a href="javascript:void(0)"><i class="ik ik-aperture"></i><span>Inovasi</span></a>

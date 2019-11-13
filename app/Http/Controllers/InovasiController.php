@@ -37,9 +37,6 @@ class InovasiController extends Controller
                 ->orderBy('id', 'asc')
                 ->get();
         return view('inovasi.detail', compact('inovasi','step','partner'));
-
-        // dibawah ini cara lain return
-        // return view('detailInovasi.index', ['detail' => $detail]);
     }
 
     public function hapus($id){

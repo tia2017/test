@@ -46,7 +46,7 @@
                 <div class="row flex-row h-100 bg-white">
                     <div class="col-xl-8 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
                         <div class="lavalite-bg">
-                    		<img class="w-100 h-100" src="{{asset('assets/img/auth/login-bg.jpg')}}">
+                    		<img class="w-100 h-100" src="{{asset('assets/img/auth/kotadepok.jpg')}}">
                             <div class="lavalite-overlay">
                             </div>
                         </div>

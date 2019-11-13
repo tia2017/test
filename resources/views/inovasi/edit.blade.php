@@ -188,9 +188,30 @@
                                         <label for="progresInovasi">Progres Inovasi (%)</label>
                                             <input type="text" class="form-control" id="progresInovasi" name="progress_inovasi[]"  value="{{$ino_step->progress_persentage}}">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-1 ">
+                                        <label for="images">Files</label>
+                                        <a href="{{Storage::url($ino_step->file) }}" id="images" class="popupimage btn btn-primary mt-2 mb-1">Tampilkan</a>
+                                        <div class="modal fade">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <img src=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $(document).ready(function(){
+                                                $('.popupimage').click(function(event){
+                                                    alert('cobaa woi')
+                                                    event.preventDefault();
+                                                    $('.modal img').attr('src', $(this).attr('href'));
+                                                    $('.modal').modal('show');
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class="col-md-3">
                                         <label for="keteranganStatus">Keterangan</label>
-                                            <textarea class="form-control" id="keteranganStatus" rows="3" name="keterangan[]">{{$ino_step->explaination}}</textarea>
+                                        <textarea class="form-control" id="keteranganStatus" rows="3" name="keterangan[]">{{$ino_step->explaination}}</textarea>
                                     </div>
                                 </div>
                                 <?php $no = $no +1?>

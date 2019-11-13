@@ -120,10 +120,14 @@
                                 <?php $no = 1 ?>
                                 @foreach($step as $ino_step)
                                 <tr>
-                                    <th scope="row"><?php echo "$no"; ?></th>
+                                    <td><?php echo "$no"; ?></td>
                                     <td>{{$ino_step->step->name}}</td>
-                                    <td>{{$ino_step->progress_persentage}}</td>
-                                    <td><img src=""></td>
+                                    <td>{{$ino_step->progress_persentage}}</td  >
+                                    <td>
+                                    @if($ino_step->file != null)
+                                        <img width="200px" src="{{Storage::url($ino_step->file) }}">
+                                    @endif
+                                    </td>
                                     <td>{{$ino_step->explaination}}</td>
                                 </tr>
                                 <?php $no = $no +1 ?>

@@ -79,7 +79,8 @@ class TambahInovasiController extends Controller
                 'form' => $request->Mitra[$i]['Bentuk'],
                 'specialization' => $request->Mitra[$i]['Bidang'],
                 'address' => $request->Mitra[$i]['Alamat'],
-                'phone' => $request->Mitra[$i]['Notelp']
+                'phone' => $request->Mitra[$i]['Notelp'],
+                'email' => $request->Mitra[$i]['Email']
             ]);
             $id_partner = $data_partner->id;
 
@@ -107,7 +108,7 @@ class TambahInovasiController extends Controller
                      
                 //upload Gambar dan memindakah file ke folder local image
                 if( $request->imgStep != null){
-                    $path = Storage::putFile('image', $request->file('imgStep')); 
+                    $path = Storage::putFile('public/image',  $request->file('imgStep'));                     
                     $nameImage = $path;
                     // dd($path);                    
                 } else{

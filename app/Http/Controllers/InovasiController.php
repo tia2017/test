@@ -36,7 +36,8 @@ class InovasiController extends Controller
         $partner = Innovation_partner::where('innovation_id',$id)
                 ->orderBy('id', 'asc')
                 ->get();
-        return view('inovasi.detail', compact('inovasi','step','partner'));
+        // $pathGambar = Storage::url('$step->file');
+        return view('inovasi.detail', compact('inovasi','step', 'partner'));
 
         // dibawah ini cara lain return
         // return view('detailInovasi.index', ['detail' => $detail]);

@@ -56,8 +56,8 @@
 
                     <div class="col-md-12">
                         <form class="forms-sample" action="/tambah-inovasi" method="post" enctype='multipart/form-data'>                    
-                        <!-- <input type="hidden" name="created_by" value="{{Session::get('id')}}">         -->
-                        <input type="hidden" name="created_by" value="3">        
+                        <input type="hidden" name="created_by" value="{{Base64_decode(Session::get('id'))}}">        
+                        <!-- <input type="hidden" name="created_by" value="3">         -->
                         <input type="hidden" name="verification_status" value="True">     
                         <input type="hidden" name="date" value="{{date('Y-m-d h:i:s')}}">                   
                         {{ csrf_field() }}
@@ -311,6 +311,15 @@
                                                         <div class="col-lg-10">
                                                             <input type="text" class="form-control @error('Mitra.*.Notelp') is-invalid @enderror" id="notelpMitra" placeholder="Nomor Telepon Mitra yang Melakukan Kerjasama" data-name="Notelp" value="{{old('Mitra.'.$i.'.Notelp') }}">
                                                             @error('Mitra.*.Notelp')
+                                                                <div class="invalid-feedback">{{$message}}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="emailMitra" class="col-lg-2 control-label">EmailMitra</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control @error('Mitra.*.Notelp') is-invalid @enderror" id="emailMitra" placeholder="Email Mitra yang Melakukan Kerjasama" data-name="Email" value="{{old('Mitra.'.$i.'.Email') }}">
+                                                            @error('Mitra.*.Email')
                                                                 <div class="invalid-feedback">{{$message}}</div>
                                                             @enderror
                                                         </div>

@@ -8,10 +8,10 @@ use Hash;
 
 
 //use App\User;
-use App\User; 
-use App\Users_Detail; 
-use App\Role; 
-use App\Institute; 
+use App\User;
+use App\Users_Detail;
+use App\Role;
+use App\Institute;
 
 class UserController extends Controller
 {
@@ -36,7 +36,7 @@ class UserController extends Controller
 
     public function store(Request $request){
 
-        
+
         $this->validate($request,[
             'name' => 'required',
             'email' => 'required',
@@ -51,7 +51,7 @@ class UserController extends Controller
             'institute_id' => 'required',
         ]);
 
-        
+
 
         $users = Users_Detail::create([
             'nik' => $request->nik,
@@ -64,7 +64,7 @@ class UserController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
-        
+
         $hasil = User::create([
             'user_id' => $users->id,
             'name' => $request->name,
@@ -75,8 +75,8 @@ class UserController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
-        
-        return redirect('users');
+
+        return redirect('/users');
     }
 
     public function edit($id)
@@ -90,16 +90,17 @@ class UserController extends Controller
         $df_institute = Institute::get();
         // print_r($df_user);
 
-        return view('users.update', compact('df_user','df_role','df_institute')); 
+        return view('users.update', compact('df_user','df_role','df_institute'));
 
     }
 
     public function update($id,Request $request)
     {
-        
+
         $users = User::find($id);
         $users->name = $request->name;
         $users->email = $request->email;
+        $users->role_id = $request->role_id;
         $users->save();
 
         $details = Users_Detail::find($users->user_id);
@@ -107,14 +108,14 @@ class UserController extends Controller
         $details->name = $request->name;
         $details->nik = $request->nik;
         $details->nip = $request->nip;
-        $details->phone =  $request->phone;
+        $details->phone =  $request->phone; 
         $details->gender =$request->gender;
         $details->address = $request->address;
         $details->institute_id = $request->institute_id;
         $details->updated_at = date('Y-m-d H:i:s');
         $details->save();
 
-        return redirect('users');
+        return redirect('/users');
     }
 
     public function delete($id)
@@ -135,5 +136,5 @@ class UserController extends Controller
 
         return true;
     }
-    
+
 }

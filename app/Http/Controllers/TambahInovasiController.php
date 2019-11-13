@@ -50,15 +50,20 @@ class TambahInovasiController extends Controller
             'strategy' => 'required',
             'risk_analysis' => 'required',
             'resource' => 'required',
+            // 'date' => 'required',
             //validate innovations_step
             'step_id' => 'required',
             'explaination' => 'required',
             'progress_persentage' => 'required|numeric|min:0|max:100',
             'Mitra.*.Bentuk' => 'required',
             'Mitra.*.Nama' => 'required',  
+            'Mitra.*.Bidang' => 'required',  
+            'Mitra.*.Alamat' => 'required' 
             
         ]);
 
+        //encode id user
+        $request->created_by =  base64_decode($request->created_by);
         // input innovation
         $data = Innovation::create($request->all());
 
@@ -70,7 +75,9 @@ class TambahInovasiController extends Controller
             // validate partner
             $data_partner =  Partner::create([
                 'name' => $request->Mitra[$i]['Nama'],
-                'form' => $request->Mitra[$i]['Bentuk']
+                'form' => $request->Mitra[$i]['Bentuk'],
+                'specialization' => $request->Mitra[$i]['Bidang'],
+                'address' => $request->Mitra[$i]['Alamat']
             ]);
             $id_partner = $data_partner->id;
 
@@ -98,8 +105,9 @@ class TambahInovasiController extends Controller
                      
                 //upload Gambar dan memindakah file ke folder local image
                 if( $request->imgStep != null){
-                    $path = Storage::putFile('image', $request->file('imgStep'));  
-                    $nameImage = $request->imgStep->getClientOriginalName();
+                    $path = Storage::putFile('image', $request->file('imgStep')); 
+                    $nameImage = $path;
+                    // dd($path);                    
                 } else{
                     $nameImage = null;
                 }

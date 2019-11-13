@@ -66,16 +66,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12">
                     <div class="card-body">
-                        <table id="myTable" class="table">
+                        <table id="myTable" class="table text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th>Action</th>
+                                    <th width="20%" class="sorting_asc_disabled sorting_desc_disabled">Opsi</th>
 
                                 </tr>
                             </thead>
@@ -88,7 +87,7 @@
                                             {{-- <td> {{ $daftar_user->users}} </td> --}}
                                             <td> {{ $daftar_user->role_name }} </td>
                                             <td>
-                                                <a href="/users/edit/{{$daftar_user->userId}}" class="badge badge-success">Edit</a>
+                                                <a href="/users/edit/{{$daftar_user->userId}}" class="badge badge-success">Ubah</a>
                                                 <a href="/users/hapus/{{$daftar_user->userId}}" class="badge badge-danger">Delete</a>
                                         </td>
 
@@ -98,7 +97,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
             </div>
             <!-- END::Tabel Data Users -->
 

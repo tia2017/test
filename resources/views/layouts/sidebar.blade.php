@@ -37,7 +37,8 @@ BEGIN::Menu Utama -->
                             <a href="javascript:void(0)"><i class="ik ik-database"></i><span>Master Data</span></a>
                             <div class="submenu-content">
                                 <a href="/roles" class="menu-item">Data Roles</a>
-                                <a href="/types" class="menu-item">Data Tipe</a>
+                                <a href="/types" class="menu-item">Jenis Inovasi</a>
+                                <a href="/pilars" class="menu-item">Data Pilar</a>
                             </div>
                         </div>
                     @endif

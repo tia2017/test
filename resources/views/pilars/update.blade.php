@@ -35,15 +35,24 @@
                      <div class="tab-pane fade show active " id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
                         <div class="card-body">
                             <form class="form-horizontal" method="post" action="/pilars/update/{{ $df_pilar->id }}">
-                                {{ csrf_field() }}  
-                                {{ method_field('PUT') }}                        
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="firstname">Nama Pilar</label>
-                                        <input type="text" value=" {{ $df_pilar->name }}" class="form-control" placeholder="Masukkan Nama Role" name="name" id="name">
+                                        <input type="text" value=" {{ $df_pilar->name }}" class="form-control" placeholder="Masukkan Nama Pilar" name="name" id="name">
                                         @if($errors->has('name'))
                                             <div class="text-danger">
                                                 {{ $errors->first('name')}}
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="firstname">Keterangan Pilar</label>
+                                        <input type="text" value=" {{ $df_pilar->description }}" class="form-control" placeholder="Masukkan Keterangan Pilar" name="description" id="description">
+                                        @if($errors->has('description'))
+                                            <div class="text-danger">
+                                                {{ $errors->first('description')}}
                                             </div>
                                         @endif
                                     </div>
@@ -53,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <!-- END::Tabel Data Users -->
 
         </div>

@@ -11,7 +11,7 @@
                             <i class="ik ik-aperture bg-blue"></i>
                             <div class="d-inline">
                                 <h5>Kelola</h5>
-                                <span>Halaman Kelola Data Type</span>
+                                <span>Halaman Kelola Jenis Inovasi</span>
                             </div>
                         </div>
                     </div>
@@ -44,23 +44,25 @@
                         <thead>
                             <tr>
                                 <th width="10%">No</th>
-                                <th width="70%">Name</th>
-                                <th>Action</th>
+                                <th>Name</th>
+                                <th>Keterangan</th>
+                                <th width="20%" class="sorting_asc_disabled sorting_desc_disabled">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
-            
-                            @foreach($df_type as $daftar_type)                                        
+
+                            @foreach($df_type as $daftar_type)
                                 <tr>
                                     <td> {{ $loop->iteration }} </td>
                                     <td> {{ $daftar_type->name }} </td>
+                                    <td> {{ $daftar_type->description }} </td>
                                     <td>
-                                        <a href="types/edit/{{$daftar_type->id}}" class="badge badge-success">Edit</a>
-                                        <a href="/types/hapus/{{ $daftar_type->id }}"  class="badge badge-danger">Delete</a>
+                                        <a href="types/edit/{{$daftar_type->id}}" class="badge badge-success">Ubah</a>
+                                        <a href="/types/hapus/{{ $daftar_type->id }}"  class="badge badge-danger">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach
-            
+
                         </tbody>
                     </table>
                 </div>

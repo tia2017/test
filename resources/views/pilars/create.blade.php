@@ -35,7 +35,7 @@
                      <div class="tab-pane fade show active " id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
                         <div class="card-body">
                             <form class="form-horizontal" method="post" action="/pilars/store">
-                                {{ csrf_field() }}                          
+                                {{ csrf_field() }}
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="firstname">Nama Pilar</label>
@@ -46,13 +46,22 @@
                                             </div>
                                         @endif
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="description">Keterangan</label>
+                                        <input type="text" class="form-control" placeholder="Masukkan Keterangan Tipe" name="description">
+                                        @if($errors->has('description'))
+                                            <div class="text-danger">
+                                                {{ $errors->first('description')}}
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                                 <button class="btn btn-success" type="submit">Simpan</button>
                             </form>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <!-- END::Tabel Data Users -->
 
         </div>

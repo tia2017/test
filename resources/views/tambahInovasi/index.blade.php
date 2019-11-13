@@ -299,8 +299,18 @@
                                                     <div class="form-group">
                                                         <label for="alamatMitra" class="col-lg-2 control-label">Alamat Mitra</label>
                                                         <div class="col-lg-10">
-                                                            <input type="text" class="form-control @error('Mitra.*.Alamat') is-invalid @enderror" id="alamatMitra" placeholder="Alamat Usaha Mitra yang Melakukan Kerjasama" data-name="Alamat" value="{{old('Mitra.'.$i.'.Alamat') }}">
+                                                            <textarea class="form-control @error('Mitra.*.Alamat') is-invalid @enderror" id="alamatMitra" placeholder="Alamat Usaha Mitra yang Melakukan Kerjasama" data-name="Alamat">{{old('Mitra.'.$i.'.Alamat')}}</textarea>
+                                                            <!-- <input type="text" class="form-control @error('Mitra.*.Alamat') is-invalid @enderror" id="alamatMitra" placeholder="Alamat Usaha Mitra yang Melakukan Kerjasama" data-name="Alamat" value="{{old('Mitra.'.$i.'.Alamat') }}"> -->
                                                             @error('Mitra.*.Alamat')
+                                                                <div class="invalid-feedback">{{$message}}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="notelpMitra" class="col-lg-2 control-label">Nomor Telepon Mitra</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control @error('Mitra.*.Notelp') is-invalid @enderror" id="notelpMitra" placeholder="Nomor Telepon Mitra yang Melakukan Kerjasama" data-name="Notelp" value="{{old('Mitra.'.$i.'.Notelp') }}">
+                                                            @error('Mitra.*.Notelp')
                                                                 <div class="invalid-feedback">{{$message}}</div>
                                                             @enderror
                                                         </div>

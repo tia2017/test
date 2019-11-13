@@ -26,6 +26,7 @@ class Auth extends Controller
 
         if($data){
             if(Hash::check($password,$data->password)){
+                Session::put('id', base64_encode($data->id));
                 Session::put('name',$data->name);
                 Session::put('role',$data->role_id);
                 Session::put('login',TRUE);

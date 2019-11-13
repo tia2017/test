@@ -38,9 +38,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#last-month" role="tab" aria-controls="pills-profile" aria-selected="true">Profile</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#previous-month" role="tab" aria-controls="pills-setting" aria-selected="false">Setting</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="last-month" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -101,7 +101,7 @@
                                             </div> -->
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
+                                    <!-- <div class="tab-pane fade" id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
                                         <div class="card-body">
                                             <form class="form-horizontal">
                                                 <div class="form-group">
@@ -139,7 +139,7 @@
                                                 <button class="btn btn-success" type="submit">Update Profile</button>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

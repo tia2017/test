@@ -57,6 +57,8 @@ class TambahInovasiController extends Controller
             'progress_persentage' => 'required|numeric|min:0|max:100',
             'Mitra.*.Bentuk' => 'required',
             'Mitra.*.Nama' => 'required',  
+            'Mitra.*.Bidang' => 'required',  
+            'Mitra.*.Alamat' => 'required' 
             
         ]);
 
@@ -73,7 +75,9 @@ class TambahInovasiController extends Controller
             // validate partner
             $data_partner =  Partner::create([
                 'name' => $request->Mitra[$i]['Nama'],
-                'form' => $request->Mitra[$i]['Bentuk']
+                'form' => $request->Mitra[$i]['Bentuk'],
+                'specialization' => $request->Mitra[$i]['Bidang'],
+                'address' => $request->Mitra[$i]['Alamat']
             ]);
             $id_partner = $data_partner->id;
 

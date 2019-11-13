@@ -151,6 +151,8 @@
                                     <th>Bentuk</th>
                                     <th>Bidang Usaha</th>
                                     <th>Alamat</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -162,11 +164,17 @@
                                     <td>{{$ino_partner->partner->form}}</td>
                                     <td>{{$ino_partner->partner->specialization}}</td>
                                     <td>{{$ino_partner->partner->address}}</td>
+                                    <td>{{$ino_partner->partner->phone}}</td>
+                                    <td>{{$ino_partner->partner->email}}</td>
                                 </tr>
                                 <?php $no = $no +1 ?>
                                 @endforeach
-                            </tbody>
-                        </table>
+                            </tbody>                                     
+                        </table>   
+                                                                                     
+                        <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="btn btn-danger pt-5 float-right">Hapus</a>
+                        <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="btn btn-warning pt-5 float-right">Ubah</a>
+                          
                     </div>
                 </div>
             </div>

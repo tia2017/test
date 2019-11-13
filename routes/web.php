@@ -21,6 +21,7 @@ Route::get('/dashboard','DashboardController@index');
 
 //Auth
 Route::post('/auth/login', 'Auth@login');
+Route::get('/logout', 'Auth@logout');
 
 //Users
 Route::get('/users', 'UserController@index');

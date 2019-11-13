@@ -58,7 +58,8 @@ class TambahInovasiController extends Controller
             'Mitra.*.Bentuk' => 'required',
             'Mitra.*.Nama' => 'required',  
             'Mitra.*.Bidang' => 'required',  
-            'Mitra.*.Alamat' => 'required' 
+            'Mitra.*.Alamat' => 'required',
+            'Mitra.*.Notelp' => 'required' 
             
         ]);
 
@@ -77,7 +78,8 @@ class TambahInovasiController extends Controller
                 'name' => $request->Mitra[$i]['Nama'],
                 'form' => $request->Mitra[$i]['Bentuk'],
                 'specialization' => $request->Mitra[$i]['Bidang'],
-                'address' => $request->Mitra[$i]['Alamat']
+                'address' => $request->Mitra[$i]['Alamat'],
+                'phone' => $request->Mitra[$i]['Notelp']
             ]);
             $id_partner = $data_partner->id;
 

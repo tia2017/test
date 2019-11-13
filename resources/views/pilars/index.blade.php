@@ -34,44 +34,35 @@
                 <div class="card-header row">
                     <div class="col col-sm-3">
                         <div class="card-options d-inline-block">
-                            <a href="#"><i class="ik ik-inbox"></i></a>
-            
-                            <!-- //link buat ke akun -->
                             <a href="/pilars/tambah"><i class="ik ik-plus"></i></a>
-            
-                            <a href="#"><i class="ik ik-rotate-cw"></i></a>
-                            <div class="dropdown d-inline-block">
-                                <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" pilar="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-more-horizontal"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="moreDropdown">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">More Action</a>
-                                </div>
-                            </div>
+                            <a href="/pilars"><i class="ik ik-rotate-cw"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="myTable" class="table">
+                    <table id="myTable" class="table text-center">
                         <thead>
                             <tr>
                                 <th width="10%">No</th>
-                                <th width="70%">Name</th>
-                                <th>Action</th>
+                                <th>Name</th>
+                                <th>Keterangan</th>
+                                <th width="20%" class="sorting_asc_disabled sorting_desc_disabled">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
-            
-                            @foreach($df_pilar as $daftar_pilar)                                        
+
+                            @foreach($df_pilar as $daftar_pilar)
                                 <tr>
                                     <td> {{ $loop->iteration }} </td>
                                     <td> {{ $daftar_pilar->name }} </td>
+                                    <td> {{ $daftar_pilar->description }} </td>
                                     <td>
-                                        <a href="pilars/edit/{{$daftar_pilar->id}}" class="badge badge-success">Edit</a>
-                                        <a href="/pilars/hapus/{{ $daftar_pilar->id }}"  class="badge badge-danger">Delete</a>
+                                        <a href="pilars/edit/{{$daftar_pilar->id}}" class="badge badge-success">Ubah</a>
+                                        <a href="/pilars/hapus/{{ $daftar_pilar->id }}"  class="badge badge-danger">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach
-            
+
                         </tbody>
                     </table>
                 </div>

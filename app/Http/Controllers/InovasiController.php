@@ -13,22 +13,19 @@ use App\Innovation_partner;
 
 class InovasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response// $detail = Innovation::find('$Innovation');
-        $detail = Innovation::find($Innovation);
-        return view::make('detailInovasi.index')->with('detail', $detail);
-        // return view('detailInovasi.index', ['detail' => $detail]);
-        // Innovation::all();
-     */
     public function index(Request $request)
     {
         $ino_steps = Innovation_step::with('innovation')
-        ->where('progress_persentage', '>', '0')
-        ->where('progress_persentage', '<', '100')
-        ->get();
-        return view('inovasi.index', compact('ino_steps'));
+            // ->where('progress_persentage', '!=', '0')
+            // ->where('progress_persentage', '!=', '100')
+            ->get();
+        $id = Innovation_step::with('innovation')
+            ->select('innovation_id')
+            ->get();
+        $persentase = Innovation_step::with('innovation')
+            // ->where('innovation_id')
+            ->avg('progress_persentage');
+        return view('inovasi.index', compact('ino_steps','persentase'));
     }
 
     public function detail($id){

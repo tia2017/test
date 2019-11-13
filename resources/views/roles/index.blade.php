@@ -46,22 +46,22 @@
                             <tr>
                                 <th width="10%">No</th>
                                 <th width="70%">Name</th>
-                                <th>Action</th>
+                                <th width="20%" class="sorting_asc_disabled sorting_desc_disabled">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
-            
-                            @foreach($df_role as $daftar_role)                                        
+
+                            @foreach($df_role as $daftar_role)
                                 <tr>
                                     <td> {{ $loop->iteration }} </td>
                                     <td> {{ $daftar_role->name }} </td>
                                     <td>
-                                        <a href="roles/edit/{{$daftar_role->id}}" class="badge badge-success">Edit</a>
-                                        <a href="/roles/hapus/{{ $daftar_role->id }}"  class="badge badge-danger">Delete</a>
+                                        <a href="roles/edit/{{$daftar_role->id}}" class="badge badge-success">Ubah</a>
+                                        <a href="/roles/hapus/{{ $daftar_role->id }}"  class="badge badge-danger">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach
-            
+
                         </tbody>
                     </table>
                 </div>

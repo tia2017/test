@@ -39,21 +39,17 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="firstname">Nama Pilar</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan Nama Pilar" name="name" id="name">
-                                        @if($errors->has('name'))
-                                            <div class="text-danger">
-                                                {{ $errors->first('name')}}
-                                            </div>
-                                        @endif
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama Pilar" name="name" id="name">
+                                        @error('name')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="description">Keterangan</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan Keterangan Tipe" name="description">
-                                        @if($errors->has('description'))
-                                            <div class="text-danger">
-                                                {{ $errors->first('description')}}
-                                            </div>
-                                        @endif
+                                        <input type="text" class="form-control @error('description') is-invalid @enderror" placeholder="Masukkan Keterangan Tipe" name="description">
+                                        @error('description')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button class="btn btn-success" type="submit">Simpan</button>

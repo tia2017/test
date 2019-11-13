@@ -45,7 +45,7 @@ class UserController extends Controller
             'nik' => 'required',
             'nip' => 'required',
             'name' => 'required',
-            'address' => 'required',
+            'alamat' => 'required',
             'gender' => 'required',
             'phone' => 'required',
             'institute_id' => 'required',

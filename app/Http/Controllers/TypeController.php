@@ -25,7 +25,7 @@ class TypeController extends Controller
     }
 
     public function store(Request $request){
-        
+
         $this->validate($request,[
     		'name' => 'required',
             'description' => 'required'
@@ -37,7 +37,7 @@ class TypeController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
     	]);
-        
+
         return redirect('types');
     }
 
@@ -46,7 +46,7 @@ class TypeController extends Controller
 
         $df_type = Type::find($id);
 
-        return view('types.update', compact('df_type')); 
+        return view('types.update', compact('df_type'));
     }
 
     public function update($id,Request $request)

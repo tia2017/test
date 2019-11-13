@@ -11,7 +11,7 @@
                             <i class="ik ik-aperture bg-blue"></i>
                             <div class="d-inline">
                                 <h5>Kelola</h5>
-                                <span>Halaman kelola Data Users</span>
+                                <span>Halaman kelola Data Pengguna</span>
                             </div>
                         </div>
                     </div>
@@ -34,19 +34,8 @@
                 <div class="card-header row">
                     <div class="col col-sm-3">
                         <div class="card-options d-inline-block">
-                            <a href="#"><i class="ik ik-inbox"></i></a>
-
-                            <!-- //link buat ke akun -->
                             <a href="/users/tambah"><i class="ik ik-plus"></i></a>
-
-                            <a href="#"><i class="ik ik-rotate-cw"></i></a>
-                            <div class="dropdown d-inline-block">
-                                <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-more-horizontal"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="moreDropdown">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">More Action</a>
-                                </div>
-                            </div>
+                            <a href="/users"><i class="ik ik-rotate-cw"></i></a>
                         </div>
                     </div>
                     <div class="col col-sm-6">
@@ -76,44 +65,39 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col col-sm-3">
-                        <div class="card-options text-right">
-                            <span class="mr-5" id="top">1 - 50 of 2,500</span>
-                            <a href="#"><i class="ik ik-chevron-left"></i></a>
-                            <a href="#"><i class="ik ik-chevron-right"></i></a>
-                        </div>
-                    </div>
                 </div>
-                <div class="card-body">
-                    <table id="myTable" class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Action</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($df_user as $daftar_user)
+                <div class="col-sm-12">
+                    <div class="card-body">
+                        <table id="myTable" class="table">
+                            <thead>
                                 <tr>
-                                    <th scope="row"> {{ $loop->iteration }} </th>
-                                        <td> {{ $daftar_user->name }} </td>
-                                        <td> {{ $daftar_user->email }} </td>
-                                        {{-- <td> {{ $daftar_user->users}} </td> --}}
-                                        <td> {{ $daftar_user->role_name }} </td>
-                                        <td>
-                                            <a href="/users/edit/{{$daftar_user->userId}}" class="badge badge-success">Edit</a>
-                                            <a href="/users/hapus/{{$daftar_user->userId}}" class="badge badge-danger">Delete</a>
-                                    </td>
+                                    <th scope="col">No</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
 
                                 </tr>
-                            @endforeach
+                            </thead>
+                            <tbody>
+                                @foreach($df_user as $daftar_user)
+                                    <tr>
+                                        <th scope="row"> {{ $loop->iteration }} </th>
+                                            <td> {{ $daftar_user->name }} </td>
+                                            <td> {{ $daftar_user->email }} </td>
+                                            {{-- <td> {{ $daftar_user->users}} </td> --}}
+                                            <td> {{ $daftar_user->role_name }} </td>
+                                            <td>
+                                                <a href="/users/edit/{{$daftar_user->userId}}" class="badge badge-success">Edit</a>
+                                                <a href="/users/hapus/{{$daftar_user->userId}}" class="badge badge-danger">Delete</a>
+                                        </td>
 
-                        </tbody>
-                    </table>
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <!-- END::Tabel Data Users -->

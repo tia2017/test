@@ -12,14 +12,14 @@ class RoleController extends Controller
 {
     public function index()
     {
-        $df_role = Roles::query()->get(['*']);
+        $df_role = Role::query()->get(['*']);
 
         return view('roles.index', compact('df_role'));
     }
 
     public function create()
     {
-        $df_role = Roles::get();
+        $df_role = Role::get();
 
         return view('roles.create', compact('df_role'));
     }
@@ -30,7 +30,7 @@ class RoleController extends Controller
     		'name' => 'required',
         ]);
 
-        Roles::create([
+        Role::create([
     		'name' => $request->name,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
@@ -42,7 +42,7 @@ class RoleController extends Controller
     public function edit($id)
     {
 
-        $df_role = Roles::find($id);
+        $df_role = Role::find($id);
 
         return view('roles.update', compact('df_role')); 
     }
@@ -53,7 +53,7 @@ class RoleController extends Controller
             'name' => 'required'
          ]);
 
-         $roles = Roles::find($id);
+         $roles = Role::find($id);
          $roles->name = $request->name;
          $roles->save();
          return redirect('/roles');
@@ -61,7 +61,7 @@ class RoleController extends Controller
 
     public function delete($id)
     {
-        $roles = Roles::find($id);
+        $roles = Role::find($id);
         $roles->delete();
         return redirect('/roles');
     }

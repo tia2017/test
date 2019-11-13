@@ -100,6 +100,7 @@ class UserController extends Controller
         $users = User::find($id);
         $users->name = $request->name;
         $users->email = $request->email;
+        $users->role_id = $request->role_id;
         $users->save();
 
         $details = Users_Detail::find($users->user_id);
@@ -107,7 +108,7 @@ class UserController extends Controller
         $details->name = $request->name;
         $details->nik = $request->nik;
         $details->nip = $request->nip;
-        $details->phone =  $request->phone;
+        $details->phone =  $request->phone; 
         $details->gender =$request->gender;
         $details->address = $request->address;
         $details->institute_id = $request->institute_id;

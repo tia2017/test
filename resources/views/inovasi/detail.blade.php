@@ -172,13 +172,19 @@
                             </tbody>                                     
                         </table>   
                                                                                      
-                        <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="btn btn-danger pt-5 float-right">Hapus</a>
-                        <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="btn btn-warning pt-5 float-right">Ubah</a>
                           
                     </div>
                 </div>
             </div>
             <!-- END::Kemitraan -->
+            <div class="row justify-content-lg-end">
+                <div class="col-lg-1 offset-lg-9">
+                    <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="btn btn-warning pt-5 float-right">Ubah</a>
+                </div>           
+                <div class="col-lg-1">
+                    <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="btn btn-danger pt-5 float-right">Hapus</a>
+                </div>
+            </div>
 
         </div>
     </div>

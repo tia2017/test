@@ -66,3 +66,6 @@ Route::get('/inovasi/cari', 'InovasiController@search');
 
 Route::get('/tambah-inovasi','TambahInovasiController@create');
 Route::post('/tambah-inovasi','TambahInovasiController@store');
+
+// profile
+route::get('/profile/{id}', 'profileController@index');

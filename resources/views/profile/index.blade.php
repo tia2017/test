@@ -146,7 +146,7 @@
                     </div>
                 </div>
             </div>
-            <aside class="right-sidebar">
+            <!-- <aside class="right-sidebar">
                 <div class="sidebar-chat" data-plugin="chat-sidebar">
                     <div class="sidebar-chat-info">
                         <h6>Chat List</h6>
@@ -197,9 +197,9 @@
                         </div>
                     </div>
                 </div>
-            </aside>
+            </aside> -->
 
-            <div class="chat-panel" hidden>
+            <!-- <div class="chat-panel" hidden>
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <a href="javascript:void(0);"><i class="ik ik-message-square text-success"></i></a>  
@@ -288,7 +288,7 @@
                 </div>
             </footer>
         </div>
-    </div>
+    </div> -->
         
         
         

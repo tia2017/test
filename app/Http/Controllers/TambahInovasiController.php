@@ -50,6 +50,7 @@ class TambahInovasiController extends Controller
             'strategy' => 'required',
             'risk_analysis' => 'required',
             'resource' => 'required',
+            // 'date' => 'required',
             //validate innovations_step
             'step_id' => 'required',
             'explaination' => 'required',
@@ -59,6 +60,8 @@ class TambahInovasiController extends Controller
             
         ]);
 
+        //encode id user
+        $request->created_by =  base64_decode($request->created_by);
         // input innovation
         $data = Innovation::create($request->all());
 

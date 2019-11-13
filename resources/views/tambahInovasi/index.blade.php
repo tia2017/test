@@ -55,10 +55,11 @@
                 @endif                        -->
 
                     <div class="col-md-12">
-                        <form class="forms-sample" action="/tambah-inovasi" method="post" enctype='multipart/form-data'>
-                        <input type="hidden" name="created_by" value="1">
-                        <input type="hidden" name="date" value="{{date('Y-m-d h:i:s')}}">
-                        <input type="hidden" name="verification_status" value="True">
+                        <form class="forms-sample" action="/tambah-inovasi" method="post" enctype='multipart/form-data'>                    
+                        <!-- <input type="hidden" name="created_by" value="{{Session::get('id')}}">         -->
+                        <input type="hidden" name="created_by" value="3">        
+                        <input type="hidden" name="verification_status" value="True">     
+                        <input type="hidden" name="date" value="{{date('Y-m-d h:i:s')}}">                   
                         {{ csrf_field() }}
 
                             <fieldset class="border p-2 mt-1 mb-3">
@@ -181,7 +182,7 @@
                                     </div>
                                     <div class="col-md-6" style="min-height: 200px;">
                                         <label for="date">Tahun Anggaran</label>
-                                        <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker">
+                                        <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker" name="">
                                     </div>
                                 </div>
                             </div>

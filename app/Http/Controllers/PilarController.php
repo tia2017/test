@@ -25,58 +25,62 @@ class PilarController extends Controller
             return redirect('/')->with('alert','Kamu harus login dulu');
         }
         else{
-            $df_pilar = Pilars::query()->get(['*']);
+            $df_pilar = Pilar::query()->get(['*']);
 
             return view('pilars.index', compact('df_pilar'));
         }
-        
+
     }
 
     public function create()
     {
-        $df_pilar = Pilars::get();
+        $df_pilar = Pilar::get();
 
         return view('pilars.create', compact('df_pilar'));
     }
 
     public function store(Request $request){
-        
+
         $this->validate($request,[
     		'name' => 'required',
+            'description' => 'required'
         ]);
 
-        Pilars::create([
+        Pilar::create([
     		'name' => $request->name,
+            'description' => $request->description,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
     	]);
-        
+
         return redirect('pilars');
     }
 
     public function edit($id)
     {
 
-        $df_pilar = Pilars::find($id);
+        $df_pilar = Pilar::find($id);
 
-        return view('pilars.update', compact('df_pilar')); 
+        return view('pilars.update', compact('df_pilar'));
     }
 
     public function update($id,Request $request)
     {
         $this->validate($request,[
-            'name' => 'required'
+            'name' => 'required',
+            'description' => 'required'
          ]);
 
-         $pilars = Pilars::find($id);
+         $pilars = Pilar::find($id);
          $pilars->name = $request->name;
+         $pilars->description = $request->description;
          $pilars->save();
          return redirect('/pilars');
     }
 
     public function delete($id)
     {
-        $pilars = Pilars::find($id);
+        $pilars = Pilar::find($id);
         $pilars->delete();
         return redirect('/pilars');
     }

@@ -35,12 +35,12 @@
                      <div class="tab-pane fade show active " id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
                         <div class="card-body">
                             <form class="form-horizontal" method="post" action="/types/update/{{ $df_type->id }}">
-                                {{ csrf_field() }}  
-                                {{ method_field('PUT') }}                        
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="firstname">Nama Tipe</label>
-                                        <input type="text" value=" {{ $df_type->name }}" class="form-control" placeholder="Masukkan Nama Tipe" name="name" id="name">
+                                        <label for="firstname">Nama Jenis Inovasi</label>
+                                        <input type="text" value=" {{ $df_type->name }}" class="form-control" placeholder="Masukkan Nama Jenis Inovasi" name="name" id="name">
                                         @if($errors->has('name'))
                                             <div class="text-danger">
                                                 {{ $errors->first('name')}}
@@ -48,8 +48,8 @@
                                         @endif
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="description">Keterangan</label>
-                                        <input type="text" value=" {{ $df_type->description }}" class="form-control" placeholder="Masukkan Keterangan Tipe" name="description" id="description">
+                                        <label for="description">Keterangan Jenis Inovasi</label>
+                                        <input type="text" value=" {{ $df_type->description }}" class="form-control" placeholder="Masukkan Keterangan Jenis Inovasi" name="description" id="description">
                                         @if($errors->has('description'))
                                             <div class="text-danger">
                                                 {{ $errors->first('description')}}
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <!-- END::Tabel Data Users -->
 
         </div>

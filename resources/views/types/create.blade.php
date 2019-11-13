@@ -11,7 +11,7 @@
                             <i class="ik ik-aperture bg-blue"></i>
                             <div class="d-inline">
                                 <h5>Kelola</h5>
-                                <span>Halaman kelola Data Type</span>
+                                <span>Halaman kelola Jenis Inovasi</span>
                             </div>
                         </div>
                     </div>
@@ -35,11 +35,11 @@
                      <div class="tab-pane fade show active " id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
                         <div class="card-body">
                             <form class="form-horizontal" method="post" action="/types/store">
-                                {{ csrf_field() }}                          
+                                {{ csrf_field() }}
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="firstname">Nama Tipe</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan Nama Tipe" name="name" id="name">
+                                        <label for="firstname">Nama Jenis Inovasi</label>
+                                        <input type="text" class="form-control" placeholder="Masukkan Nama Jenis Inovasi" name="name" id="name">
                                         @if($errors->has('name'))
                                             <div class="text-danger">
                                                 {{ $errors->first('name')}}
@@ -47,8 +47,8 @@
                                         @endif
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="description">Keterangan</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan Keterangan Tipe" name="description">
+                                        <label for="description">Keterangan Jenis Inovasi</label>
+                                        <input type="text" class="form-control" placeholder="Masukkan Keterangan Jenis Inovasi" name="description">
                                         @if($errors->has('description'))
                                             <div class="text-danger">
                                                 {{ $errors->first('description')}}
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <!-- END::Tabel Data Users -->
 
         </div>

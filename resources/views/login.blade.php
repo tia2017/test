@@ -56,7 +56,7 @@
                             <div>
                                 <a href="login"><img src="{{asset('assets/src/img/logo_item.png')}}" style="display: block;margin-left: auto;margin-right: auto;margin-bottom: 25px;" alt=""></a>
                             </div>
-                            <h3>Sign In</h3>
+                            <h3>LOGIN</h3>
                             <!-- <p>Happy to see you again!</p> -->
                             <form action="/auth/login" method="POST">
                                 @if(\Session::has('alert'))
@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                                 <div class="sign-btn text-center">
-                                    <button class="btn btn-theme">Sign In</button>
+                                    <button class="btn btn-theme">LOGIN</button>
                                 </div>
                             </form>
                         </div>

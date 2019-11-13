@@ -15,7 +15,7 @@ jQuery.fn.extend({
             var itemContent = items;
             var group = itemContent.data("group");
             var item = itemContent;
-            var input = item.find('input,select');
+            var input = item.find('input, textarea, select');
            
             //buat objek inputnya ngulang dua kali
             input.each(function (index, el) {

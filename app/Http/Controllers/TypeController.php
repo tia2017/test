@@ -12,14 +12,14 @@ class TypeController extends Controller
 {
     public function index()
     {
-        $df_type = Types::query()->get(['*']);
+        $df_type = Type::query()->get(['*']);
 
         return view('types.index', compact('df_type'));
     }
 
     public function create()
     {
-        $df_type = Types::get();
+        $df_type = Type::get();
 
         return view('types.create', compact('df_type'));
     }
@@ -28,10 +28,12 @@ class TypeController extends Controller
         
         $this->validate($request,[
     		'name' => 'required',
+            'description' => 'required'
         ]);
 
-        Types::create([
+        Type::create([
     		'name' => $request->name,
+            'description' => $request->description,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
     	]);
@@ -42,7 +44,7 @@ class TypeController extends Controller
     public function edit($id)
     {
 
-        $df_type = Types::find($id);
+        $df_type = Type::find($id);
 
         return view('types.update', compact('df_type')); 
     }
@@ -50,18 +52,20 @@ class TypeController extends Controller
     public function update($id,Request $request)
     {
         $this->validate($request,[
-            'name' => 'required'
+            'name' => 'required',
+            'description' => 'required'
          ]);
 
-         $Types = Types::find($id);
+         $Types = Type::find($id);
          $Types->name = $request->name;
+         $Types->description = $request->description;
          $Types->save();
          return redirect('/types');
     }
 
     public function delete($id)
     {
-        $Types = Types::find($id);
+        $Types = Type::find($id);
         $Types->delete();
         return redirect('/types');
     }

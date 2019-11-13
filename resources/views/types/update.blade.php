@@ -47,6 +47,15 @@
                                             </div>
                                         @endif
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="description">Keterangan</label>
+                                        <input type="text" value=" {{ $df_type->description }}" class="form-control" placeholder="Masukkan Keterangan Tipe" name="description" id="description">
+                                        @if($errors->has('description'))
+                                            <div class="text-danger">
+                                                {{ $errors->first('description')}}
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                                 <button class="btn btn-success" type="submit">Simpan</button>
                             </form>

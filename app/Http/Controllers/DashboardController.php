@@ -14,8 +14,8 @@ class DashboardController extends Controller
     public function index()
     {
     	$ino_steps = Innovation_step::with('innovation')
-        // ->where('progress_persentage', '>', '0')
-        // ->where('progress_persentage', '<', '100')
+        ->where('progress_persentage', '>', '0')
+        ->where('progress_persentage', '<', '100')
         ->get();
 
         $inovasi = Innovation::all();

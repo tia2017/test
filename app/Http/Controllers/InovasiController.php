@@ -16,8 +16,8 @@ class InovasiController extends Controller
     public function index(Request $request)
     {
         $ino_steps = Innovation_step::with('innovation')
-            // ->where('progress_persentage', '!=', '0')
-            // ->where('progress_persentage', '!=', '100')
+            ->where('progress_persentage', '!=', '0')
+            ->where('progress_persentage', '!=', '100')
             ->get();
         $id = Innovation_step::with('innovation')
             ->select('innovation_id')

@@ -188,13 +188,45 @@
                                         <label for="progresInovasi">Progres Inovasi (%)</label>
                                             <input type="text" class="form-control" id="progresInovasi" name="progress_inovasi[]"  value="{{$ino_step->progress_persentage}}">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-1 ">
+                                        <label for="images">Files</label>
+                                        <a href="{{Storage::url($ino_step->file) }}" id="images" class="popupimage btn btn-primary mt-2 mb-1">Tampilkan</a>                                      
+                                    </div>
+                                    <div class="col-md-3">
                                         <label for="keteranganStatus">Keterangan</label>
-                                            <textarea class="form-control" id="keteranganStatus" rows="3" name="keterangan[]">{{$ino_step->explaination}}</textarea>
+                                        <textarea class="form-control" id="keteranganStatus" rows="3" name="keterangan[]">{{$ino_step->explaination}}</textarea>
                                     </div>
                                 </div>
                                 <?php $no = $no +1?>
                                 @endforeach
+                                <div class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="" class="img-thumbnail" alt="Responsive image"/>
+                                                
+                                                <input type="file" name="imgStep" class="file-upload-default">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="input-group">
+                                                    <label>Unggah File</label>
+                                                </div>
+                                                <div class="input-group col-xs-12">
+                                                    <input type="text" class="form-control file-upload-info" disabled placeholder="File" value="{{old('file')}}">
+                                                    <span class="input-group-append">
+                                                    <button class=" file-upload-browse btn btn-primary" type="button">Unggah</button>
+                                                    </span>
+                                                </div>                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
                             </div>
                             <!-- END::Tahapan Inovasi -->
 

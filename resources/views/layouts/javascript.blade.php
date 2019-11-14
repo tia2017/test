@@ -46,6 +46,15 @@ ga('create','UA-XXXXX-X','auto');ga('send','pageview');
 </script>
 <!-- END::Repeater -->
 
+<!--BEGIN pop up image -->
 <script>
-    
-</script>
+    $(document).ready(function(){
+        $('.popupimage').click(function(event){
+            // alert('cobaa woi')
+            event.preventDefault();
+            $('.modal img').attr('src', $(this).attr('href'));
+            $('.modal').modal('show');
+        });
+    });
+    </script>
+<!-- END pop up -->

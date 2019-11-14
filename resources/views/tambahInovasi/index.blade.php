@@ -315,6 +315,15 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="emailMitra" class="col-lg-2 control-label">EmailMitra</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control @error('Mitra.*.Notelp') is-invalid @enderror" id="emailMitra" placeholder="Email Mitra yang Melakukan Kerjasama" data-name="Email" value="{{old('Mitra.'.$i.'.Email') }}">
+                                                            @error('Mitra.*.Email')
+                                                                <div class="invalid-feedback">{{$message}}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- Repeater Remove Btn -->
                                                 <div class="float-right repeater-remove-btn">

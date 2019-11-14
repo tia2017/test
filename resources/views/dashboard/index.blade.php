@@ -10,7 +10,7 @@
                         <i class="ik ik-bar-chart-2 bg-blue"></i>
                         <div class="d-inline">
                             <h5>Dasbor</h5>
-                            <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                            <span>Informasi Inovasi Smart City Depok</span>
                         </div>
                     </div>
                 </div>
@@ -44,14 +44,14 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <h2>{{ $jumlah_perangkat_daerah }}</h2>
-                                <h6>Perangkat Daerah</h6>
+                                <h2>{{ $jumlah_selesai }}</h2>
+                                <h6>Jumlah Inovasi</h6>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-help-circle"></i>
                             </div>
                         </div>
-                        <small class="text-small mt-10 d-block">Memiliki Inovasi</small>
+                        <small class="text-small mt-10 d-block">Selesai 100%</small>
                     </div>
                     <div class="progress progress-sm">
                         <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100" style="width: 31%;"></div>
@@ -74,6 +74,7 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header"><h3>Distribusi Perkembangan</h3></div>
+                    
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-lg-12 col-md-12">
@@ -146,32 +147,32 @@
                 <div class="card">
                     <div class="card-header"><h3>Inovasi Berdasarkan Perangkat Daerah</h3></div>
                     <div class="card-body">
-                        <div class="row container align-items-center">
+                        <div class="row container">
                             <!-- BEGIN::Kolom 1 Inovasi PD -->
                             @foreach($semua_inovasi as $inovasi_institute)
-
-                            <div class="col-lg-3 col-md-12">
+                            <div class="col-lg-2 col-md-12">
                                 <div class="row mb-15">
-                                    <div class="col-9">{{ $inovasi_institute->short_name }}</div>
+                                    <div class="col-9">{{ $inovasi_institute->short_name }} (Satuan)</div>
                                     <div class="col-3 text-right"></div>
                                     <div class="col-12">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-green" role="progressbar" style="width: 48%" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-green" role="progressbar" style="width:  {{ $inovasi_institute->innovation_count / $jumlah_inovasi * 100}}%" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
-
                                 @foreach($inovasi_institute->innovation as $ino_ino)
                                 <div class="row mb-15">
                                     <div class="col-9">
                                         {{$ino_ino->name}}
                                     </div>
-                                    <div class="col-3 text-right">0%</div>
+                                    @foreach($ino_ino->innovation_step as $ino)
+                                    <div class="col-3 text-right">%</div>
                                     <div class="col-12">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-aqua" role="progressbar" style="width: 0%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-aqua" role="progressbar" style="width: {{$ino->progress_persentage}}%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                                 @endforeach
                             </div>

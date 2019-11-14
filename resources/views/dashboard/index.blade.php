@@ -44,14 +44,14 @@
                     <div class="widget-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
-                                <h2>{{ $jumlah_perangkat_daerah }}</h2>
-                                <h6>Perangkat Daerah</h6>
+                                <h2>{{ $jumlah_selesai }}</h2>
+                                <h6>Jumlah Inovasi</h6>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-help-circle"></i>
                             </div>
                         </div>
-                        <small class="text-small mt-10 d-block">Memiliki Inovasi</small>
+                        <small class="text-small mt-10 d-block">Selesai 100%</small>
                     </div>
                     <div class="progress progress-sm">
                         <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100" style="width: 31%;"></div>

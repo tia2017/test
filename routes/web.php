@@ -69,3 +69,4 @@ Route::post('/tambah-inovasi','TambahInovasiController@store');
 
 // profile
 route::get('/profile/{id}', 'profileController@index');
+

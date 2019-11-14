@@ -9,7 +9,7 @@
                                 <div class="page-header-title">
                                     <i class="ik ik-file-text bg-blue"></i>
                                     <div class="d-inline">
-                                        <h5>Profile</h5>
+                                        <h5>Profil</h5>
                                         <span>Tentang akun anda</span>
                                     </div>
                                 </div>
@@ -18,19 +18,16 @@
                                 <nav class="breadcrumb-container" aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../index.html"><i class="ik ik-home"></i></a>
+                                            <a href="/dashboard"><i class="ik ik-home"></i></a>
                                         </li>
-                                        <li class="breadcrumb-item">
-                                            <a href="#">Pages</a>
-                                        </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Profil</li>
                                     </ol>
                                 </nav>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">                
+                    <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
                                 <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
@@ -152,7 +149,7 @@
                         <h6>Chat List</h6>
                         <form class="mr-t-10">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search for friends ..."> 
+                                <input type="text" class="form-control" placeholder="Search for friends ...">
                                 <i class="ik ik-search"></i>
                             </div>
                         </form>
@@ -202,8 +199,8 @@
             <!-- <div class="chat-panel" hidden>
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <a href="javascript:void(0);"><i class="ik ik-message-square text-success"></i></a>  
-                        <span class="user-name">John Doe</span> 
+                        <a href="javascript:void(0);"><i class="ik ik-message-square text-success"></i></a>
+                        <span class="user-name">John Doe</span>
                         <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
                     </div>
                     <div class="card-body">
@@ -289,9 +286,9 @@
             </footer>
         </div>
     </div> -->
-        
-        
-        
+
+
+
 
     <div class="modal fade apps-modal" id="appsModal" tabindex="-1" role="dialog" aria-labelledby="appsModalLabel" aria-hidden="true" data-backdrop="false">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ik ik-x-circle"></i></button>
@@ -357,7 +354,7 @@
                             <div class="app-item">
                                 <a href="#"><i class="ik ik-edit"></i><span>Blogs</span></a>
                             </div>
-                            
+
                             <div class="app-item">
                                 <a href="#"><i class="ik ik-more-horizontal"></i><span>More</span></a>
                             </div>

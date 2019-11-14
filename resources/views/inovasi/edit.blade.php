@@ -189,8 +189,15 @@
                                             <input type="text" class="form-control" id="progresInovasi" name="progress_inovasi[]"  value="{{$ino_step->progress_persentage}}">
                                     </div>
                                     <div class="col-md-1 ">
-                                        <label for="images">Files</label>
-                                        <a href="{{Storage::url($ino_step->file) }}" id="images" class="popupimage btn btn-primary mt-2 mb-1">Tampilkan</a>                                      
+                                        <label for="files">Files</label>
+                                        <?php                                             
+                                            $path[$no] = $ino_step->file ;
+                                        ?>
+                                        <div class="input-groups">
+                                            <input type="file" name="files[]" class="file-upload-default" value="coba">                                                                                                                
+                                        </div>
+                                        <a href="{{Storage::url($ino_step->file)}}" id="files" class="popupimage btn btn-primary mt-2 mb-1">Ubah</a>                                    
+                
                                     </div>
                                     <div class="col-md-3">
                                         <label for="keteranganStatus">Keterangan</label>
@@ -208,16 +215,14 @@
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-                                                <img src="" class="img-thumbnail" alt="Responsive image"/>
-                                                
-                                                <input type="file" name="imgStep" class="file-upload-default">
+                                            <div class="modal-body">                                                                                           
+                                                <a href="" class="btn btn-primary" target="_blank">klik untuk melihat</a>                                                                                                                                                
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="modal-footer">                                                
                                                 <div class="input-group">
                                                     <label>Unggah File</label>
                                                 </div>
-                                                <div class="input-group col-xs-12">
+                                                <div class="input-group col-xs-12">                                                    
                                                     <input type="text" class="form-control file-upload-info" disabled placeholder="File" value="{{old('file')}}">
                                                     <span class="input-group-append">
                                                     <button class=" file-upload-browse btn btn-primary" type="button">Unggah</button>

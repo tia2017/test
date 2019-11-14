@@ -125,7 +125,8 @@
                                     <td>{{$ino_step->progress_persentage}}</td  >
                                     <td>
                                     @if($ino_step->file != null)
-                                        <img width="200px" src="{{Storage::url($ino_step->file) }}">
+                                        <!-- <img width="200px" src="{{Storage::url($ino_step->file) }}"> -->
+                                        <a href="{{Storage::url($ino_step->file)}}" class="btn btn-primary mt-2 mb-1" target="_blank">Tampilkan</a> 
                                     @endif
                                     </td>
                                     <td>{{$ino_step->explaination}}</td>

@@ -207,7 +207,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Unggah File</label>
-                                        <input type="file" name="imgStep" class="file-upload-default" value=>
+                                        <input type="file" name="files" class="file-upload-default" value=>
                                         <div class="input-group col-xs-12">
                                             <input type="text" class="form-control file-upload-info" disabled placeholder="File" value="{{old('file')}}">
                                             <span class="input-group-append">

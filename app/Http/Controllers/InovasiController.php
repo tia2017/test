@@ -89,6 +89,7 @@ class InovasiController extends Controller
                     $step = Innovation_step::find($request->id_step[$i]);
                     $step->progress_persentage = $request->progress_inovasi[$i];
                     $step->explaination = $request->keterangan[$i];
+                    $step->file = $request->file;
                     $step->save();
                 }
             }

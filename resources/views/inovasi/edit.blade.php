@@ -58,7 +58,9 @@
                                     <div class="col-md-4">
                                         <label for="perangkatDaerah">Perangkat Daerah</label>
                                         <select class="form-control" id="perangkatDaerah" name="institute">
-                                            <option value="{{$inovasi->institute->short_name}}" >{{$inovasi->institute->short_name}}</option>
+                                        @foreach($df_institute as $institute)
+                                            <option {{ $inovasi->institute_id == $institute->id ? 'selected="selected"' : '' }} value="{{$institute->id}}">{{$institute->short_name}}</option>
+                                        @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -71,13 +73,17 @@
                                     <div class="col-md-6">
                                         <label for="jenisInovasi">Jenis Inovasi</label>
                                         <select class="form-control" id="jenisInovasi" name="type">
-                                            <option value="{{$inovasi->type->name}}">{{$inovasi->type->name}}</option>
+                                        @foreach($df_type as $type)
+                                            <option {{ $inovasi->innovation_type_id == $type->id ? 'selected="selected"' : '' }} value="{{$type->id}}">{{$type->name}}</option>
+                                        @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="pilarInovasi">Pilar Smart City</label>
                                         <select class="form-control" id="pilarInovasi" name="pillar">
-                                            <option value="{{$inovasi->pilar->name}}">{{$inovasi->pilar->name}}</option>
+                                        @foreach($df_pilar as $pilar)
+                                            <option {{ $inovasi->pilar_id == $pilar->id ? 'selected="selected"' : '' }} value="{{$pilar->id}}">{{$pilar->name}}</option>
+                                        @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -170,7 +176,7 @@
                                     <div class="col-md-6">
                                         <label for="statusInovasi">Tahapan Inovasi <?=$no?></label>
                                         <select class="form-control" id="statusInovasi" disabled="disabled">
-                                                <option value="{{$ino_step->step->name}}">{{$ino_step->step->name}}</option>
+                                            <option value="{{$ino_step->step->name}}">{{$ino_step->step->name}}</option>
                                         </select>
                                     </div>
                                     <!-- <div class="col-md-2">
@@ -186,16 +192,10 @@
                                     <input type="hidden" name="id_step[]" value="{{$ino_step->id}}">
                                     <div class="col-md-2">
                                         <label for="progresInovasi">Progres Inovasi (%)</label>
-                                            <input type="text" class="form-control" id="progresInovasi" name="progress_inovasi[]"  value="{{$ino_step->progress_persentage}}">
+                                            <input type="text" class="form-control progress" id="progresInovasi" name="progress_inovasi[]"  value="{{$ino_step->progress_persentage}}">
                                     </div>
                                     <div class="col-md-1 ">
-                                        <label for="files">Files</label>
-                                        <?php                                             
-                                            $path[$no] = $ino_step->file ;
-                                        ?>
-                                        <div class="input-groups">
-                                            <input type="file" name="files[]" class="file-upload-default" value="coba">                                                                                                                
-                                        </div>
+                                        <label for="files">Files</label>                                                                        
                                         <a href="{{Storage::url($ino_step->file)}}" id="files" class="popupimage btn btn-primary mt-2 mb-1">Ubah</a>                                    
                 
                                     </div>
@@ -222,7 +222,8 @@
                                                 <div class="input-group">
                                                     <label>Unggah File</label>
                                                 </div>
-                                                <div class="input-group col-xs-12">                                                    
+                                                <div class="input-group col-xs-12">                                             
+                                                    <input type="file" name="files[]" class="file-upload-default" value="coba">
                                                     <input type="text" class="form-control file-upload-info" disabled placeholder="File" value="{{old('file')}}">
                                                     <span class="input-group-append">
                                                     <button class=" file-upload-browse btn btn-primary" type="button">Unggah</button>

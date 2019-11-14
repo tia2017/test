@@ -30,7 +30,7 @@ class TambahInovasiController extends Controller
     {       
         
         // dd($request->files->getRealPath());
-        // dd($coba = $request->all());
+        dd($coba = $request->all());
         // echo "<pre>";
         // print_r($_POST);
         // die();
@@ -109,7 +109,7 @@ class TambahInovasiController extends Controller
                 //upload Gambar dan memindakah file ke folder local image
                 if( $request->files != null){
                     // $path = Storage::putFile('public/image',  $request->file('files'));
-                    $path = $request->file('files')->store('public/image');                     
+                    $path = $request->file('files')->store('public/user_');                     
                     $nameImage = $path;
                     // dd($path);                    
                 } else{

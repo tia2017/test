@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 use App\Innovation;
 use App\Innovation_step;
 use App\Innovation_partner;
+use App\Institute;
+use App\Pilar;
+use App\Type;
+use Illuminate\Support\Facades\Storage;
 
 class InovasiController extends Controller
 {
@@ -43,8 +47,19 @@ class InovasiController extends Controller
         // return view('detailInovasi.index', ['detail' => $detail]);
     }
 
-    public function hapus($id){
+    public function hapus($id){        
         $inovasi = Innovation::find($id);
+        $file = Innovation_step::where([
+            ['innovation_id', $id],
+            ['file','!=', null]
+            ])->get(['file'])->pluck('file');
+        
+        // delete file di storage
+        foreach($file as $files){
+            Storage::disk('local')->delete($files);
+        }
+
+        // delete semua inovasi
         $inovasi->delete();
 
         return redirect('inovasi')->with('status', 'Data Inovasi Berhasil Dihapus');
@@ -55,7 +70,10 @@ class InovasiController extends Controller
         $step = Innovation_step::where('innovation_id',$id)
                 ->orderBy('id', 'asc')
                 ->get();
-        return view('inovasi.edit', compact('inovasi','step'));
+        $df_institute = Institute::get();
+        $df_type = Type::get();
+        $df_pilar = Pilar::get();
+        return view('inovasi.edit', compact('inovasi','step','df_institute','df_pilar', 'df_type'));
     }
 
 

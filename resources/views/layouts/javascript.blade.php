@@ -55,5 +55,23 @@ ga('create','UA-XXXXX-X','auto');ga('send','pageview');
             $('.modal').modal('show');
         });
     });
-    </script>
+</script>
 <!-- END pop up -->
+
+<!-- BEGIN disable and enabled progress -->
+<script>
+    $(document).ready(function(){
+        $('.progress').each(function(){
+            $progress = $(this).attr('value');             
+            if($progress== 100 ){
+                $(this).attr({
+                    'disabled': 'disabled'
+                });
+            }
+            $key++;         
+            
+        //    alert($(this).attr('value'));
+        });
+    });
+</script>
+<!-- END disable and enabled progress -->

@@ -10,7 +10,7 @@
                         <i class="ik ik-bar-chart-2 bg-blue"></i>
                         <div class="d-inline">
                             <h5>Dasbor</h5>
-                            <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                            <span>Informasi Inovasi Smart City Depok</span>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                                 <i class="ik ik-help-circle"></i>
                             </div>
                         </div>
-                        <small class="text-small mt-10 d-block">Belum Memiliki Inovasi</small>
+                        <small class="text-small mt-10 d-block">Memiliki Inovasi</small>
                     </div>
                     <div class="progress progress-sm">
                         <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100" style="width: 31%;"></div>

@@ -62,6 +62,12 @@ class DashboardController extends Controller
             
         ]);
 
+        $distribusi = User::query()
+        //SELECT *, COUNT(innovation_id) FROM `innovation_steps` JOIN steps on innovation_steps.step_id = steps.id GROUP BY step_id
+         ->count('innovation_id')
+         ->join("innovation_steps","steps.id","=","steps.step_id")
+         ->get();
+
     }
 
 }

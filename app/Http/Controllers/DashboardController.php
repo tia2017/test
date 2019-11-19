@@ -52,21 +52,23 @@ class DashboardController extends Controller
         // dd($semua_inovasi->innovation_count);
         // dd(Institute::with('innovation')->innovation->get());
         
+        $distribusi = Innovation_step::query()
+        //SELECT *, COUNT(innovation_id) FROM `innovation_steps` JOIN steps on innovation_steps.step_id = steps.id GROUP BY step_id
+         ->count('innovation_id')
+         ->join("innovation_steps","steps.id","=","steps.step_id")
+         ->get();
 
         return view('dashboard.index', [
         	'ino_steps'=>$ino_steps,
         	'jumlah_inovasi'=>$jumlah_inovasi,
         	'jumlah_perangkat_daerah'=>$jumlah_institute,
             'semua_inovasi'=>$semua_inovasi,
-            'jumlah_selesai' => $count
+            'jumlah_selesai' => $count,
+            'distribusi'=>$distribusi
+
             
         ]);
 
-        $distribusi = User::query()
-        //SELECT *, COUNT(innovation_id) FROM `innovation_steps` JOIN steps on innovation_steps.step_id = steps.id GROUP BY step_id
-         ->count('innovation_id')
-         ->join("innovation_steps","steps.id","=","steps.step_id")
-         ->get();
 
     }
 

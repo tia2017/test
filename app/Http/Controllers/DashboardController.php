@@ -64,7 +64,7 @@ class DashboardController extends Controller
         	'jumlah_perangkat_daerah'=>$jumlah_institute,
             'semua_inovasi'=>$semua_inovasi,
             'jumlah_selesai' => $count,
-            'distribusi'=>$distribusi
+           // 'distribusi'=>$distribusi
 
             
         ]);

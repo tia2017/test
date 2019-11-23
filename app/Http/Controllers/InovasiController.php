@@ -73,7 +73,9 @@ class InovasiController extends Controller
         $df_institute = Institute::get();
         $df_type = Type::get();
         $df_pilar = Pilar::get();
+        
         return view('inovasi.edit', compact('inovasi','step','df_institute','df_pilar', 'df_type'));
+        // return view('inovasi.edit', compact('inovasi','step','df_institute','df_pilar', 'df_type'));
     }
 
 

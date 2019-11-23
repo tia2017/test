@@ -172,6 +172,8 @@
                             <div class="form-group">
                                 <?php $no = 1?>
                                 @foreach($step as $ino_step)
+
+                                <!-- kalo udah step 6, tolong dii -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="statusInovasi">Tahapan Inovasi <?=$no?></label>

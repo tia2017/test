@@ -166,11 +166,11 @@
                                         {{$ino_ino->name}}
                                     </div>
                                     @foreach($ino_ino->innovation_step as $ino)
-                                    <div class="col-3 text-right">%</div>
+                                    <div class="col-3 text-right"></div>
                                     <div class="col-12">
-                                        <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-aqua" role="progressbar" style="width: {{$ino->progress_persentage}}%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
+                                        <!-- <div class="progress progress-sm mt-5"> -->
+                                            <!-- <div class="progress-bar bg-aqua" role="progressbar" style="width: {{$ino->progress_persentage}}%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div> -->
+                                        <!-- </div> -->
                                     </div>
                                     @endforeach
                                 </div>

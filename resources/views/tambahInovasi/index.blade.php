@@ -59,7 +59,7 @@
                         <!-- <input type="hidden" name="created_by" value="{{Session::get('id')}}">         -->
                         <input type="hidden" name="created_by" value="3">
                         <input type="hidden" name="verification_status" value="True">
-                        
+
                         {{ csrf_field() }}
 
                             <fieldset class="border p-2 mt-1 mb-3">
@@ -182,7 +182,7 @@
                                     </div>
                                     <div class="col-md-6" style="min-height: 200px;">
                                         <label for="date">Tahun Anggaran</label>
-                                        
+
                                         <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-date-format="YYYY-MM-DD hh:mm:ss" data-target="#datepicker" name="date">
                                     </div>
                                 </div>

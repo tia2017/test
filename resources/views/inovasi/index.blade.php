@@ -106,7 +106,7 @@
                                         <td>{{$persentase}}%</td>
                                     {{-- @endforeach --}}
                                         <td>
-                                            <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="badge badge-warning">Ubah</a>
+                                            <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="badge badge-success">Ubah</a>
                                             <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="badge badge-danger">Hapus</a>
                                         </td>
                                 </tr>

@@ -19,16 +19,29 @@ class InovasiController extends Controller
 {
     public function index(Request $request)
     {
-        $ino_steps = Innovation_step::with('innovation')
-            ->where('progress_persentage', '!=', '0')
-            ->where('progress_persentage', '!=', '100')
-            ->get();
+        $ino_steps = DB::table("innovations")
+                    ->select(DB::raw("innovations.id,
+                                    step_id,
+                                    steps.name as step_name,
+                                    innovations.name as innov_name, 
+                                    progress_persentage as progres_innov,
+                                    SUM(progress_persentage)/6 as persentasi"))
+                    ->leftJoin('innovation_steps', 'innovations.id', '=', 'innovation_steps.innovation_id')
+                    ->leftJoin('steps', 'steps.id', '=', 'innovation_steps.step_id')
+                    ->groupBy('innovations.id')
+                    ->get();
+        // $ino_steps = Innovation_step::with('innovation')
+        //     ->select('*',DB::raw("SUM(progress_persentage)/6 as persentasi"))
+        //     ->where('progress_persentage', '!=', '0')
+        //     ->where('progress_persentage', '!=', '100')
+        //     ->groupBy('innovation_id')
+        //     ->get();
         $id = Innovation_step::with('innovation')
             ->select('innovation_id')
             ->get();
-        $persentase = Innovation_step::with('innovation')
-            // ->where('innovation_id')
-            ->avg('progress_persentage');
+        
+
+        // dd($ino_steps);
         return view('inovasi.index', compact('ino_steps','persentase'));
     }
 

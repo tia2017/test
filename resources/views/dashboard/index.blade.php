@@ -45,7 +45,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
                                 <h2>{{ $jumlah_selesai }}</h2>
-                                <h6>Jumlah Inovasi</h6>
+                                <h6>Jumlah Inovasi Selesai</h6>
                             </div>
                             <div class="icon">
                                 <i class="ik ik-help-circle"></i>
@@ -80,55 +80,55 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="row mb-15">
                                     <div class="col-4">Perumusan Masalah atau Kebutuhan</div>
-                                    <div class="col-2 text-right">28%</div>
+                                <div class="col-2 text-right">{{$jumlah_perstep[0]}}%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-green" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-green" role="progressbar" style="width: {{$jumlah_perstep[0]}}%" aria-valuenow="{{$jumlah_perstep[0]}}" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-15">
                                     <div class="col-4">Perumusan Ide</div>
-                                    <div class="col-2 text-right">21%</div>
+                                    <div class="col-2 text-right">{{$jumlah_perstep[1]}}%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-aqua" role="progressbar" style="width: 21%" aria-valuenow="21" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-aqua" role="progressbar" style="width: {{$jumlah_perstep[1]}}%" aria-valuenow="{{$jumlah_perstep[1]}}" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-15">
                                     <div class="col-4">Perencanaan Pembangunan</div>
-                                    <div class="col-2 text-right">18%</div>
+                                    <div class="col-2 text-right">{{$jumlah_perstep[2]}}%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-purple" role="progressbar" style="width: 18%" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-purple" role="progressbar" style="width: {{$jumlah_perstep[2]}}%" aria-valuenow="{{$jumlah_perstep[2]}}" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-15">
                                     <div class="col-4">Pembangunan</div>
-                                    <div class="col-2 text-right">12%</div>
+                                    <div class="col-2 text-right">{{$jumlah_perstep[3]}}%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: {{$jumlah_perstep[3]}}%" aria-valuenow="{{$jumlah_perstep[3]}}" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-15">
                                     <div class="col-4">Implementasi</div>
-                                    <div class="col-2 text-right">55%</div>
+                                    <div class="col-2 text-right">{{$jumlah_perstep[4]}}%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-yellow" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-yellow" role="progressbar" style="width: {{$jumlah_perstep[4]}}%" aria-valuenow="{{$jumlah_perstep[4]}}" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-4">Evaluasi</div>
-                                    <div class="col-2 text-right">73%</div>
+                                    <div class="col-2 text-right">{{$jumlah_perstep[5]}}%</div>
                                     <div class="col-6">
                                         <div class="progress progress-sm mt-5">
-                                            <div class="progress-bar bg-grey" role="progressbar" style="width: 73%" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-grey" role="progressbar" style="width: {{$jumlah_perstep[5]}}%" aria-valuenow="{{$jumlah_perstep[5]}}" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>

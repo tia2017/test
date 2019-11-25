@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $inovasi = Innovation::all();
     	$jumlah_inovasi = $inovasi->count();
 
-// MANA DIA? INI DIA! INI DIA!
+        // MANA DIA? INI DIA! INI DIA!
         //NOMOR 2
 
         $total = DB::table('innovation_steps')
@@ -58,12 +58,36 @@ class DashboardController extends Controller
         //  ->join("innovation_steps","steps.id","=","steps.step_id")
         //  ->get();
 
+                
+        $progres_perstep = DB::table('innovation_steps')
+        ->select( DB::raw('steps.id, steps.name as name, COUNT(steps.id) as total'))
+        ->leftJoin('steps', 'steps.id', '=', 'innovation_steps.step_id')
+        ->where('progress_persentage', '=', '100')
+        ->groupBy('step_id')
+        ->get();
+
+
+
+        for($no = 0; $no < 6; $no++){
+            $datas = Innovation_step::where('step_id', '=', $no+1)->get();
+            $jumlah = $datas->count();
+            $jumlah_perstep[$no] = 0;
+            if(count($progres_perstep) >= $no+1){
+                $jumlah_perstep[$progres_perstep[$no]->id - 1] = ($progres_perstep[$no]->total / $jumlah) * 100;
+            }
+        }
+        // prno_r($jumlah_perstep);
+        //     print_r("<br>");
+        // // dd($progres_perstep[0]->id);
+        // die();
+
         return view('dashboard.index', [
         	'ino_steps'=>$ino_steps,
         	'jumlah_inovasi'=>$jumlah_inovasi,
         	'jumlah_perangkat_daerah'=>$jumlah_institute,
             'semua_inovasi'=>$semua_inovasi,
             'jumlah_selesai' => $count,
+            'jumlah_perstep' => $jumlah_perstep
            // 'distribusi'=>$distribusi
 
             

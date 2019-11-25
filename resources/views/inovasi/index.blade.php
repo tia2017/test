@@ -97,18 +97,29 @@
                             <tbody>
                                 @foreach($ino_steps as $ino_step)
                                 <tr>
-                                        <td scope="row">{{$loop->iteration}}</td>
+                                    <td scope="row">{{$loop->iteration}}</td>
+                                    <td><a href="/inovasi/detail/{{$ino_step->id}}" >{{$ino_step->innov_name}}</a></td>
+                                    <td>{{$ino_step->innov_name}}</td>
+                                    <td>{{$ino_step->step_name}}</td>
+                                    <td>{{$ino_step->progres_innov}}%</td>
+                                    <td>{{$ino_step->persentasi}}%</td>
+                                    <td>
+                                        <a href="/inovasi/edit/{{$ino_step->id}}" class="badge badge-warning">Ubah</a>
+                                        <a href="/inovasi/hapus/{{$ino_step->id}}" class="badge badge-danger">Hapus</a>
+                                    </td>
+
+                                    {{-- <td scope="row">{{$loop->iteration}}</td>
                                         <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}" >{{$ino_step->innovation->name}}</a></td>
                                         <td>{{$ino_step->innovation->institute->short_name}}</td>
                                         <td>{{$ino_step->step->name}}</td>
                                         <td>{{$ino_step->progress_persentage}}%</td>
                                     {{-- @foreach ($persentase as $persen) --}}
-                                        <td>{{$persentase}}%</td>
+                                        {{-- <td>{{$persentase}}%</td> --}}
                                     {{-- @endforeach --}}
-                                        <td>
+                                        {{-- <td>
                                             <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="badge badge-warning">Ubah</a>
                                             <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="badge badge-danger">Hapus</a>
-                                        </td>
+                                        </td>  --}}
                                 </tr>
                                 @endforeach
                             </tbody>

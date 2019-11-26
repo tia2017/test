@@ -110,17 +110,17 @@ class TambahInovasiController extends Controller
                 if( $request->files != null){
                     // $path = Storage::putFile('public/image',  $request->file('files'));
                     $path = $request->file('files')->store('public/user_');                     
-                    $nameImage = $path;
+                    $nameFile = $path;
                     // dd($path);                    
                 } else{
-                    $nameImage = null;
+                    $nameFile = null;
                 }
 
                 $data_step = Innovation_step::create([
                     'innovation_id' => $id_inovasinya,
                     'step_id' => $i,
                     'explaination' => $request['explaination'],
-                    'file' => $nameImage,                    
+                    'file' => $nameFile,                    
                     'progress_persentage' => $request['progress_persentage']
                 ]);                
                 

@@ -52,6 +52,8 @@ ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         $('.popupimage').click(function(event){
             event.preventDefault();
             $('.modal a').attr('href', $(this).attr('href'))
+            // $('.modal input').attr('name', $(this).attr('id'))
+            $('.modal input-group input').attr('value', $(this).attr('id'))
             $('.modal').modal('show');
         });
     });

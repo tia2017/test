@@ -86,16 +86,13 @@ class InovasiController extends Controller
         $df_institute = Institute::get();
         $df_type = Type::get();
         $df_pilar = Pilar::get();
-        
         return view('inovasi.edit', compact('inovasi','step','df_institute','df_pilar', 'df_type'));
-        // return view('inovasi.edit', compact('inovasi','step','df_institute','df_pilar', 'df_type'));
     }
 
 
     public function store(Request $request){
-
         if(isset($_POST['master_inovasi'])){
-            // dd($request->all());
+            // update master inovasi
             $data = Innovation::where('id', $request->id_inovasi)->update([
                 'name' => $request->innovation,
                 'description' => $request->description,
@@ -110,19 +107,33 @@ class InovasiController extends Controller
 
             return redirect('inovasi')->with('status', 'Data Inovasi Berhasil Diubah');
         }elseif(isset($_POST['step_inovasi'])){
-            // dd($request->all());
+            dd($request->all());
+            // Move data file
+            $df_file = $request->file('files');
+            if($request->hasFile('files'))
+            {
+                $key = 0;
+                foreach ($df_file as $file) {
+                    $nameFile[$key] = $file->store('public/user_');
+                    $key++;
+                }
+            }
+
+            // Update data tahapan
             for($i=0;$i<=5;$i++){
                 if($request->keterangan[$i]==NULL){
                     $step = Innovation_step::find($request->id_step[$i]);
                     $step->progress_persentage = $request->progress_inovasi[$i];
+                    $step->file = '';
                     $step->explaination = '';
                     $step->save();
                 }
                 else{
+                    
                     $step = Innovation_step::find($request->id_step[$i]);
                     $step->progress_persentage = $request->progress_inovasi[$i];
+                    $step->file = $nameFile[$i];
                     $step->explaination = $request->keterangan[$i];
-                    $step->file = $request->file;
                     $step->save();
                 }
             }
@@ -133,16 +144,16 @@ class InovasiController extends Controller
     }
     public function search(Request $request){
         $cari_global = $request->cari_global;
-        // $cari_inovasi = $request->cari_inovasi;
-        // $cari_perangkat = $request->cari_perangkat;
-        // $cari_tahun = $request->cari_tahun;
-        // $cari_bulan = $request->cari_bulan;
+        $cari_inovasi = $request->cari_inovasi;
+        $cari_perangkat = $request->cari_perangkat;
+        $cari_tahun = $request->cari_tahun;
+        $cari_bulan = $request->cari_bulan;
 
         $inovasi = Innovation::
-              where('name', 'like', "%".$cari_global."%")
-            // ->where('short_name', 'like', "%".$cari_perangkat."%")
-            // ->where('date', 'like', "%".$cari_tahun."%")
-            // ->where('date', 'like', "%".$cari_bulan."%")
+              where('name', 'like', "%".$cari_inovasi."%")
+            ->where('short_name', 'like', "%".$cari_perangkat."%")
+            ->where('date', 'like', "%".$cari_tahun."%")
+            ->where('date', 'like', "%".$cari_bulan."%")
             ->paginate();
     }
 

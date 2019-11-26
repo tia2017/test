@@ -41,9 +41,9 @@
                 <div class="col col-sm-6">
                     <div class="card-search with-adv-search dropdown">
                         <form action="/inovasi/cari" method="GET">
-                          <!--   <input type="text" class="form-control global_filter" id="global_filter" name="cari_global" placeholder="Pencarian" required> -->
-                            <!-- <button type="submit" class="btn btn-icon"><i class="ik ik-search"></i></button> -->
-                            <!-- <button type="button" id="adv_wrap_toggler" class="adv-btn ik ik-chevron-down dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button> -->
+                            <input type="text" class="form-control global_filter" id="global_filter" name="cari_global" placeholder="Pencarian" required>
+                            <button type="submit" class="btn btn-icon"><i class="ik ik-search"></i></button>
+                            <button type="button" id="adv_wrap_toggler" class="adv-btn ik ik-chevron-down dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="adv-search-wrap dropdown-menu dropdown-menu-right" aria-labelledby="adv_wrap_toggler">
                                 <div class="row">
                                     <div class="col-md-12">

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Innovation;
 use App\Innovation_step;
 use App\Institute;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -76,6 +77,12 @@ class DashboardController extends Controller
                 $jumlah_perstep[$progres_perstep[$no]->id - 1] = ($progres_perstep[$no]->total / $jumlah) * 100;
             }
         }
+
+        
+        // print_r($sebulanan."<br>");
+        // print_r($belumsebulanan."<br>");
+        // print_r($more90."<br>");
+        // print_r($dt."<br>");
         // prno_r($jumlah_perstep);
         //     print_r("<br>");
         // // dd($progres_perstep[0]->id);
@@ -92,8 +99,47 @@ class DashboardController extends Controller
 
             
         ]);
+    }
 
+    public function donut(){
+        $data_steps = Innovation_step::with('innovation')
+        ->groupBy('innovation_id')
+        ->havingRaw('SUM(progress_persentage) < ?', [600])
+        ->get();
+        $dt = Carbon::now();
 
+        $donut = [];
+        $more90 = 0;
+        $sebulanan = 0;
+        $belumsebulanan = 0;
+        foreach ($data_steps as $data) {
+        $year = Carbon::parse($data->created_at);
+        // print_r($year."<br>");
+
+        if($year->year == $dt->year ){
+            if($year->month   == $dt->month   ){
+                $donut['belumsebulanan'] = $data->id;
+            }
+            else{
+                $jumlahhari = $year->diffInDays($dt, false);   
+
+                if($jumlah  > 30 ){
+                    $donut['sebulanan'] = $data->id;
+                    // $sebulanan = $sebulanan + 1;
+                }
+                else{
+                    $donut['sebulanan'] = $data->id;
+                    // $belumsebulanan = $belumsebulanan + 1;
+                }
+            }
+            }
+            else{
+            $donut['more90'] = $data->id;
+            // $more90 = $more90 + 1;
+            }
+        }
+        return response()->json($donut);
+    
     }
 
 }

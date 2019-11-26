@@ -291,4 +291,61 @@
 
     </div>
 </div>
+
+<script>
+        var url = "{{url('dashboard/donut')}}";
+        var Years = new Array();
+        var Labels = new Array();
+        var Prices = new Array();
+        $(document).ready(function(){
+          $.get(url, function(response){
+            var c3DonutChart = c3.generate({
+                bindto: '#c3-donut-chart',
+                data: {
+                columns: [
+                    ['90 Hari Lebih', 50],
+                    ['Kurang dari 30 Hari', 50],
+                ],
+                type: 'donut',
+                onclick: function(d, i) {
+                    console.log("onclick", d, i);
+                },
+                onmouseover: function(d, i) {
+                    console.log("onmouseover", d, i);
+                },
+                onmouseout: function(d, i) {
+                    console.log("onmouseout", d, i);
+                }
+                },
+                color: {
+                pattern: ['rgba(88,216,163,1)', 'rgba(4,189,254,0.6)', 'rgba(237,28,36,0.6)']
+                },
+                padding: {
+                top: 0,
+                right: 0,
+                bottom: 30,
+                left: 0,
+                },
+                donut: {
+                title: "Persentase Terkini"
+                }
+            });
+
+            setTimeout(function() {
+                c3DonutChart.load({
+                columns: response
+                });
+            }, 1500);
+
+            setTimeout(function() {
+                c3DonutChart.unload({
+                ids: 'data1'
+                });
+                c3DonutChart.unload({
+                ids: 'data2'
+                });
+            }, 2500);
+          });
+        });
+        </script>
 @endsection

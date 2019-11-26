@@ -18,6 +18,7 @@ Route::get('/', function () {
 //Dashboard
 // Route::get('/dashboard', 'Dashboard@index');
 Route::get('/dashboard','DashboardController@index');
+Route::get('/dashboard/donut','DashboardController@donut');
 
 //Auth
 Route::post('/auth/login', 'Auth@login');

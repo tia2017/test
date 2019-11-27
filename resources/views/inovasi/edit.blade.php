@@ -190,9 +190,9 @@
                                         </div>
                                     </div> -->
                                     <input type="hidden" name="id_step[]" value="{{$ino_step->id}}">
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 " id="progress">
                                         <label for="progresInovasi">Progres Inovasi (%)</label>
-                                            <input type="text" class="form-control progress" id="progresInovasi" name="progress_inovasi[]"  value="{{$ino_step->progress_persentage}}">
+                                        <input type="text" class="form-control" id="progresInovasi" name="progress_inovasi[]"  value="{{$ino_step->progress_persentage}}">
                                     </div>
                                     <div class="col-md-1 ">
                                         <label for="files">Files</label>
@@ -203,8 +203,38 @@
                                             <button class=" file-upload-browse btn btn-primary" type="button">Unggah</button>
                                             </span>
                                         </div>                                                                         -->
-                                        <a href="{{Storage::url($ino_step->file)}}" id="files[{{$no}}]" class="popupimage btn btn-primary mt-2 mb-1">Ubah</a>                                    
-                
+                                        <a href="{{Storage::url($ino_step->file)}}" id="files[{{$no}}]" class="popupimage btn btn-primary mt-2 mb-1" onClick='ShowModal('myModal-<?= $no ?>')'>Ubah</a>                                    
+                                        <!-- <a href="{{Storage::url($ino_step->file)}}" id="myBtn" class="myBtn btn btn-primary mt-2 mb-1" onclick="ShowModal('myModal-<?= $no ?>')"> Ubah</a>  -->
+                                                                        
+                                        
+                                        <div class="modal fade">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title"></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">                                                                                                                                     
+                                                        <a href="" class="btn btn-primary" target="_blank">klik untuk melihat</a>                                                                                                                                                                                    
+                                                    </div>
+                                                    <div class="modal-footer">                                                
+                                                        <div class="input-group">
+                                                            <label>Unggah Fi    le</label>
+                                                        </div>
+                                                        <input type="file" name="files[]" class="file-upload-default" value="coba">
+                                                        <div class="input-group col-xs-12">                                             
+                                                            <input type="text" class=" form-control file-upload-info" disabled placeholder="File">
+                                                            <span class="input-group-append">
+                                                            <button class=" file-upload-browse btn btn-primary" type="button">Unggah</button>
+                                                            </span>
+                                                        </div>                                               
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>  
+
                                     </div>
                                     <div class="col-md-3">
                                         <label for="keteranganStatus">Keterangan</label>
@@ -213,33 +243,6 @@
                                 </div>
                                 <?php $no = $no +1?>
                                 @endforeach
-                                <div class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title"></h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">                                                                                                                                     
-                                                <a href="" class="btn btn-primary" target="_blank">klik untuk melihat</a>                                                                                                                                                                                    
-                                            </div>
-                                            <div class="modal-footer">                                                
-                                                <div class="input-group">
-                                                    <label>Unggah File</label>
-                                                </div>
-                                                <input type="file" name="files[]" class="file-upload-default" value="coba">
-                                                <div class="input-group col-xs-12">                                             
-                                                    <input type="text" class=" form-control file-upload-info" disabled placeholder="File">
-                                                    <span class="input-group-append">
-                                                    <button class=" file-upload-browse btn btn-primary" type="button">Unggah</button>
-                                                    </span>
-                                                </div>                                               
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
                             </div>
                             <!-- END::Tahapan Inovasi -->
 

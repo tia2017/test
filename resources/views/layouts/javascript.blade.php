@@ -1,41 +1,51 @@
-
-<script>window.jQuery || document.write('<script src="{{ asset('assets/src/js/vendor/jquery-3.3.1.min.js') }}"><\/script>')</script>
+<script>
+    window.jQuery || document.write('<script src="{{ asset('
+        assets / src / js / vendor / jquery - 3.3 .1.min.js ') }}"><\/script>')
+</script>
 <script src="{{ asset('assets/plugins/popper.js/dist/umd/popper.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-{{-- <script src="{{ asset('assets/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script> --}}
+<script src="{{ asset('assets/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/select2/dist/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/summernote/dist/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/form-fields-repeater/repeater.js') }}"></script>
-{{-- <script src="{{ asset('assets/plugins/mohithg-switchery/dist/switchery.min.js') }}"></script> --}}
+<script src="{{ asset('assets/plugins/mohithg-switchery/dist/switchery.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/screenfull/dist/screenfull.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-{{-- <script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js') }}"></script> --}}
+<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js') }}"></script>
 <script src="{{ asset('assets/plugins/moment/moment.js') }}"></script>
 <script src="{{ asset('assets/plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/d3/dist/d3.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/c3/c3.min.js') }}"></script>
 <script src="{{ asset('assets/js/tables.js') }}"></script>
-{{-- <script src="{{ asset('assets/js/widgets.js') }}"></script> --}}
+<script src="{{ asset('assets/js/widgets.js') }}"></script>
 <script src="{{ asset('assets/js/charts.js') }}"></script>
-{{-- <script src="{{ asset('assets/dist/js/theme.min.js') }}"></script> --}}
+<script src="{{ asset('assets/dist/js/theme.min.js') }}"></script>
 <script src="{{ asset('assets/js/form-components.js') }}"></script>
-{{-- <script src="{{ asset('assets/js/form-advanced.js') }}"></script> --}}
-{{-- <script src="{{ asset('assets/js/form-picker.js') }}"></script> --}}
+<script src="{{ asset('assets/js/form-advanced.js') }}"></script>
+<script src="{{ asset('assets/js/form-picker.js') }}"></script>
 <script src="{{ asset('assets/js/jquery-minicolors/jquery.minicolors.min.js') }}"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
-(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-e.src='https://www.google-analytics.com/analytics.js';
-r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+    (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+            function() {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');
 </script>
 
 <!-- BEGIN::Repeater -->
@@ -48,32 +58,43 @@ ga('create','UA-XXXXX-X','auto');ga('send','pageview');
 
 <!--BEGIN pop up files -->
 <script>
-    $(document).ready(function(){
-        $('.popupimage').click(function(event){
-            event.preventDefault();
-            $('.modal a').attr('href', $(this).attr('href'))
-            // $('.modal input').attr('name', $(this).attr('id'))
-            $('.modal input-group input').attr('value', $(this).attr('id'))
-            $('.modal').modal('show');
-        });
-    });
+    // var modal =  $('.popupimage');
+    // $(document).ready(function(){
+    //    modal.click(function(event){
+    //         event.preventDefault();
+    //         // $('.modal a').attr('href', $(this).attr('href'))
+    //         // $('.modal input').attr('name', $(this).attr('id'))
+    //         // $('.modal input-group input').attr('value', $(this).attr('id'))
+    //         $('.modal').modal('show');
+    //     });
+    // });
+
+    function ShowModal(id) {
+        alert(id);
+    }
 </script>
 <!-- END pop up -->
 
 <!-- BEGIN disable and enabled progress -->
-<script>
+<!-- <script>
     $(document).ready(function(){
-        $('.progress').each(function(){
-            $progress = $(this).attr('value');             
-            if($progress== 100 ){
-                $(this).attr({
-                    'disabled': 'disabled'
-                });
-            }
-            $key++;         
-            
-        //    alert($(this).attr('value'));
+        var items = this.find("#progress");
+        var input = items.find('input');
+        input.each(function (index, el) {
+            alert('test');
         });
+        // $('#progress').each(function(){
+        //     alert('test');
+        //     $progress = $(this).attr('value');             
+        //     if($progress== 100 ){
+        //         $(this).attr({
+        //             'disabled': 'disabled'
+        //         });
+        //     }
+        //     $key++;         
+            
+        // //    alert($(this).attr('value'));
+        // });
     });
-</script>
+</script> -->
 <!-- END disable and enabled progress -->

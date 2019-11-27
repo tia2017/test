@@ -30,7 +30,7 @@ class TambahInovasiController extends Controller
     {
 
         // dd($request->files->getRealPath());
-        // dd($coba = $request->all());
+        // dd($request->all());
         // echo "<pre>";
         // print_r($_POST);
         // die();
@@ -50,10 +50,11 @@ class TambahInovasiController extends Controller
             'strategy' => 'required',
             'risk_analysis' => 'required',
             'resource' => 'required',
-            // 'date' => 'required',
+            'date' => 'required',
             //validate innovations_step
             'step_id' => 'required',
             'explaination' => 'required',
+            'files' => 'required',
             'progress_persentage' => 'required|numeric|min:0|max:100',
             'Mitra.*.Bentuk' => 'required',
             'Mitra.*.Nama' => 'required',
@@ -70,7 +71,7 @@ class TambahInovasiController extends Controller
 
         // input innovation_step
         $id_inovasinya = $data->id;
-
+        // dd($request->Mitra);    
         //input partner
         for($i = 0; $i < count($request->Mitra) ;$i++){
             // validate partner

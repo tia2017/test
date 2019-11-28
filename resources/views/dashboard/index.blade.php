@@ -299,13 +299,32 @@
         var Prices = new Array();
         $(document).ready(function(){
           $.get(url, function(response){
+            // console.log(response.kurang)
+            
+            var datanya = [
+                ['Kurang dari 30 Hari'],
+                ['Lebih dari 90 Hari'],
+                ['Antara 30 - 90 Hari'],
+            ]
+
+            for (var i = 0; i < response.kurang.length; i++) {                
+                datanya[0][i+1] = response.kurang[i];
+            }
+
+            for (var i = 0; i < response.antara.length; i++) {                
+                datanya[2][i+1] = response.kurang[i];
+            }
+
+            for (var i = 0; i < response.lebih.length; i++) {                
+                datanya[1][i+1] = response.kurang[i];
+            }
+
+            // console.log(datanya);
+
             var c3DonutChart = c3.generate({
                 bindto: '#c3-donut-chart',
                 data: {
-                columns: [
-                    ['90 Hari Lebih', 50],
-                    ['Kurang dari 30 Hari', 50],
-                ],
+                columns: datanya,
                 type: 'donut',
                 onclick: function(d, i) {
                     console.log("onclick", d, i);

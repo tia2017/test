@@ -53,11 +53,6 @@ class DashboardController extends Controller
         // dd($semua_inovasi->innovation_count);
         // dd(Institute::with('innovation')->innovation->get());
         
-        // $distribusi = Innovation_step::all();
-        // //SELECT *, COUNT(innovation_id) FROM `innovation_steps` JOIN steps on innovation_steps.step_id = steps.id GROUP BY step_id
-        //  ->count('innovation_id')
-        //  ->join("innovation_steps","steps.id","=","steps.step_id")
-        //  ->get();
 
                 
         $progres_perstep = DB::table('innovation_steps')
@@ -78,15 +73,9 @@ class DashboardController extends Controller
             }
         }
 
-        
-        // print_r($sebulanan."<br>");
-        // print_r($belumsebulanan."<br>");
-        // print_r($more90."<br>");
-        // print_r($dt."<br>");
-        // prno_r($jumlah_perstep);
-        //     print_r("<br>");
-        // // dd($progres_perstep[0]->id);
-        // die();
+            // print_r($jumlah_perstep);
+
+            // die();
 
         return view('dashboard.index', [
         	'ino_steps'=>$ino_steps,
@@ -108,36 +97,48 @@ class DashboardController extends Controller
         ->get();
         $dt = Carbon::now();
 
-        $donut = [];
+        $donut = array(
+            "kurang" => array(),
+            "antara" => array(),
+            "lebih" => array(),
+        );
         $more90 = 0;
         $sebulanan = 0;
         $belumsebulanan = 0;
         foreach ($data_steps as $data) {
+
         $year = Carbon::parse($data->created_at);
         // print_r($year."<br>");
 
         if($year->year == $dt->year ){
             if($year->month   == $dt->month   ){
-                $donut['belumsebulanan'] = $data->id;
+                // $donut['belumsebulanan'] = $data->id;
+                array_push($donut["kurang"],$data->id);
             }
             else{
                 $jumlahhari = $year->diffInDays($dt, false);   
 
                 if($jumlah  > 30 ){
-                    $donut['sebulanan'] = $data->id;
+                    // $donut['sebulanan'] = $data->id;
+                    array_push($donut["antara"],$data->id);
                     // $sebulanan = $sebulanan + 1;
                 }
                 else{
-                    $donut['sebulanan'] = $data->id;
+                    // $donut['sebulanan'] = $data->id;
+                    array_push($donut["kurang"],$data->id);                
                     // $belumsebulanan = $belumsebulanan + 1;
                 }
             }
             }
             else{
-            $donut['more90'] = $data->id;
+            // $donut['more90'] = $data->id;
+            array_push($donut["lebih"],$data->id);
             // $more90 = $more90 + 1;
             }
         }
+
+        // print_r($donut);
+        // return $donut;
         return response()->json($donut);
     
     }

@@ -164,7 +164,7 @@
                 <div class="tab-content" id="myTabContent2">
 
                     <div class="col-md-12">
-                        <form class="forms-sample" method="post" action="/inovasi/edit">
+                        <form class="forms-sample" method="post" action="/inovasi/edit" enctype='multipart/form-data'>
                             {{ csrf_field() }}
                             {{-- {{ method_field('PUT')}} --}}
 
@@ -172,8 +172,6 @@
                             <div class="form-group">
                                 <?php $no = 1?>
                                 @foreach($step as $ino_step)
-
-                                <!-- kalo udah step 6, tolong dii -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="statusInovasi">Tahapan Inovasi <?=$no?></label>
@@ -197,8 +195,15 @@
                                             <input type="text" class="form-control progress" id="progresInovasi" name="progress_inovasi[]"  value="{{$ino_step->progress_persentage}}">
                                     </div>
                                     <div class="col-md-1 ">
-                                        <label for="files">Files</label>                                                                        
-                                        <a href="{{Storage::url($ino_step->file)}}" id="files" class="popupimage btn btn-primary mt-2 mb-1">Ubah</a>                                    
+                                        <label for="files">Files</label>
+                                        <!-- <input type="file" name="files[]" class="file-upload-default" multiple>
+                                        <div class="input-group col-xs-12">                                             
+                                            <input type="text" class="form-control file-upload-info" disabled placeholder="File" value="{{old('file')}}">
+                                            <span class="input-group-append">
+                                            <button class=" file-upload-browse btn btn-primary" type="button">Unggah</button>
+                                            </span>
+                                        </div>                                                                         -->
+                                        <a href="{{Storage::url($ino_step->file)}}" id="files[{{$no}}]" class="popupimage btn btn-primary mt-2 mb-1">Ubah</a>                                    
                 
                                     </div>
                                     <div class="col-md-3">
@@ -217,16 +222,16 @@
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">                                                                                           
-                                                <a href="" class="btn btn-primary" target="_blank">klik untuk melihat</a>                                                                                                                                                
+                                            <div class="modal-body">                                                                                                                                     
+                                                <a href="" class="btn btn-primary" target="_blank">klik untuk melihat</a>                                                                                                                                                                                    
                                             </div>
                                             <div class="modal-footer">                                                
                                                 <div class="input-group">
                                                     <label>Unggah File</label>
                                                 </div>
+                                                <input type="file" name="files[]" class="file-upload-default" value="coba">
                                                 <div class="input-group col-xs-12">                                             
-                                                    <input type="file" name="files[]" class="file-upload-default" value="coba">
-                                                    <input type="text" class="form-control file-upload-info" disabled placeholder="File" value="{{old('file')}}">
+                                                    <input type="text" class=" form-control file-upload-info" disabled placeholder="File">
                                                     <span class="input-group-append">
                                                     <button class=" file-upload-browse btn btn-primary" type="button">Unggah</button>
                                                     </span>

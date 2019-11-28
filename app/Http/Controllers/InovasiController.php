@@ -107,9 +107,10 @@ class InovasiController extends Controller
 
             return redirect('inovasi')->with('status', 'Data Inovasi Berhasil Diubah');
         }elseif(isset($_POST['step_inovasi'])){
-            dd($request->all());
+            // dd($request->all());
             // Move data file
             $df_file = $request->file('files');
+            
             if($request->hasFile('files'))
             {
                 $key = 0;
@@ -117,6 +118,8 @@ class InovasiController extends Controller
                     $nameFile[$key] = $file->store('public/user_');
                     $key++;
                 }
+            }else{
+                $nameFile=null;
             }
 
             // Update data tahapan

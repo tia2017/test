@@ -181,9 +181,11 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-6" style="min-height: 200px;">
-                                        <label for="date">Tahun Anggaran</label>
-                                        
-                                        <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-date-format="YYYY-MM-DD hh:mm:ss" data-target="#datepicker" name="date">
+                                        <label for="date">Tahun Anggaran</label>                                        
+                                        <input type="text" class="form-control @error('date') is-invalid @enderror datetimepicker-input " id="datepicker" data-toggle="datetimepicker" data-date-format="YYYY-MM-DD hh:mm:ss" value="{{old('date')}}" data-target="#datepicker" name="date">
+                                        @error('date')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -208,12 +210,15 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Unggah File</label>
-                                        <input type="file" name="files" class="file-upload-default" value=>
+                                        <input type="file" name="files" class="file-upload-default" value="{{old('files')}}">
                                         <div class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" disabled placeholder="File" value="{{old('file')}}">
+                                            <input type="text" class="form-control @error('files') is-invalid @enderror file-upload-info" disabled placeholder="File" value="{{old('files')}}">
                                             <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
+                                                <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
                                             </span>
+                                            @error('files')
+                                                <div class="invalid-feedback">{{$message}}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -317,7 +322,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="emailMitra" class="col-lg-2 control-label">EmailMitra</label>
+                                                        <label for="emailMitra" class="col-lg-2 control-label">Email Mitra</label>
                                                         <div class="col-lg-10">
                                                             <input type="text" class="form-control @error('Mitra.*.Notelp') is-invalid @enderror" id="emailMitra" placeholder="Email Mitra yang Melakukan Kerjasama" data-name="Email" value="{{old('Mitra.'.$i.'.Email') }}">
                                                             @error('Mitra.*.Email')

@@ -28,7 +28,9 @@ class InovasiController extends Controller
                                     SUM(progress_persentage)/6 as persentasi"))
                     ->leftJoin('innovation_steps', 'innovations.id', '=', 'innovation_steps.innovation_id')
                     ->leftJoin('steps', 'steps.id', '=', 'innovation_steps.step_id')
-                    ->groupBy('innovations.id')
+                    // ->where('progress_persentage', '!=', '0')
+                    // ->where('progress_persentage', '!=', '100')
+                    ->groupBy(['innovations.id'])
                     ->get();
         $ino_steps = Innovation_step::with('innovation')
             ->where('progress_persentage', '!=', '0')
@@ -47,7 +49,7 @@ class InovasiController extends Controller
             ->get();
         
 
-        dd($total);
+        // dd($total);
         return view('inovasi.index', compact('ino_steps','total'));
     }
 

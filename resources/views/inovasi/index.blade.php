@@ -95,6 +95,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?= $no=0; ?>
                                 @foreach($ino_steps as $ino_step)
                                 <tr>
                                     <td scope="row">{{$loop->iteration}}</td>
@@ -102,7 +103,7 @@
                                     <td>{{$ino_step->innovation->institute->name}}</td>
                                     <td>{{$ino_step->step->name}}</td>
                                     <td>{{$ino_step->progress_persentage}}%</td>
-                                    <td>{{$total[0]->persentasi}}%</td>
+                                    <td>{{$total[$no]->persentasi}}%</td>
                                     <td>
                                         <a href="/inovasi/edit/{{$ino_step->id}}" class="badge badge-success">Ubah</a>
                                         <a href="/inovasi/hapus/{{$ino_step->id}}" class="badge badge-danger">Hapus</a>
@@ -121,6 +122,7 @@
                                             <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="badge badge-danger">Hapus</a>
                                         </td>  --}}
                                 </tr>
+                                <?= $no+=1; ?>
                                 @endforeach
                             </tbody>
                         </table>

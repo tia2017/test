@@ -38,7 +38,7 @@
                             <a href="/users"><i class="ik ik-rotate-cw"></i></a>
                         </div>
                     </div>
-                    <div class="col col-sm-6">
+                    <!-- <div class="col col-sm-6">
                         <div class="card-search with-adv-search dropdown">
                             <form action="">
                                 <input type="text" class="form-control global_filter" id="global_filter" placeholder="Pencarian" required>
@@ -64,7 +64,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                     <div class="card-body">
                         <table id="myTable" class="table text-center">

@@ -204,7 +204,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col col-sm-6">
+                <!-- <div class="col col-sm-6">
                     <div class="card-search with-adv-search dropdown">
                         <form action="">
                             <input type="text" class="form-control global_filter" id="global_filter" placeholder="Pencarian" required>
@@ -237,7 +237,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
                 <div class="col col-sm-3">
                     <div class="card-options text-right">
                         <span class="mr-5" id="top">1 - 50 of 2,500</span>

@@ -203,25 +203,28 @@
                                             <button class=" file-upload-browse btn btn-primary" type="button">Unggah</button>
                                             </span>
                                         </div>                                                                         -->
-                                        <a href="{{Storage::url($ino_step->file)}}" id="files[{{$no}}]" class="popupimage btn btn-primary mt-2 mb-1" onClick='ShowModal('myModal-<?= $no ?>')'>Ubah</a>                                    
-                                        <!-- <a href="{{Storage::url($ino_step->file)}}" id="myBtn" class="myBtn btn btn-primary mt-2 mb-1" onclick="ShowModal('myModal-<?= $no ?>')"> Ubah</a>  -->
-                                                                        
+                                        <!-- <a href="{{Storage::url($ino_step->file)}}" id="files[{{$no}}]" class="popupimage btn btn-primary mt-2 mb-1" onClick='ShowModal("myModal-<?= $no ?>")'>Ubah</a>                                     -->
+                                        <a href="{{Storage::url($ino_step->file)}}" class="myModal btn btn-primary mt-2 mb-1" data-toggle="modal" data-target="#myModal-<?php echo $no; // Displaying the increment ?>">Ubah</a>                                    
+                                        <!-- <button type="button" class="btn btn-primary mt-2 mb-1" data-toggle="modal" data-target="#myModal-<?php echo $no; // Displaying the increment ?>">                                 -->
                                         
-                                        <div class="modal fade">
+                                        <div class="modal fade" id="myModal-<?php echo $no; // Displaying the increment ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
+
                                                     <div class="modal-header">
                                                         <h5 class="modal-title"></h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
+
                                                     <div class="modal-body">                                                                                                                                     
                                                         <a href="" class="btn btn-primary" target="_blank">klik untuk melihat</a>                                                                                                                                                                                    
                                                     </div>
+
                                                     <div class="modal-footer">                                                
                                                         <div class="input-group">
-                                                            <label>Unggah Fi    le</label>
+                                                            <label>Unggah File</label>
                                                         </div>
                                                         <input type="file" name="files[]" class="file-upload-default" value="coba">
                                                         <div class="input-group col-xs-12">                                             
@@ -231,6 +234,7 @@
                                                             </span>
                                                         </div>                                               
                                                     </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>  

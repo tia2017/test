@@ -38,7 +38,7 @@
                         <a href="inovasi"><i class="ik ik-rotate-cw"></i></a>
                     </div>
                 </div>
-                <div class="col col-sm-6">
+                <!-- <div class="col col-sm-6">
                     <div class="card-search with-adv-search dropdown">
                         <form action="/inovasi/cari" method="GET">
                             <input type="text" class="form-control global_filter" id="global_filter" name="cari_global" placeholder="Pencarian" required>
@@ -71,7 +71,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-sm-3">
 
                 </div>
@@ -98,11 +98,11 @@
                                 @foreach($ino_steps as $ino_step)
                                 <tr>
                                     <td scope="row">{{$loop->iteration}}</td>
-                                    <td><a href="/inovasi/detail/{{$ino_step->id}}" >{{$ino_step->innov_name}}</a></td>
-                                    <td>{{$ino_step->innov_name}}</td>
-                                    <td>{{$ino_step->step_name}}</td>
-                                    <td>{{$ino_step->progres_innov}}%</td>
-                                    <td>{{$ino_step->persentasi}}%</td>
+                                    <td><a href="/inovasi/detail/{{$ino_step->id}}" >{{$ino_step->innovation->name}}</a></td>
+                                    <td>{{$ino_step->innovation->institute->name}}</td>
+                                    <td>{{$ino_step->step->name}}</td>
+                                    <td>{{$ino_step->progress_persentage}}%</td>
+                                    <td>{{$total[0]->persentasi}}%</td>
                                     <td>
                                         <a href="/inovasi/edit/{{$ino_step->id}}" class="badge badge-success">Ubah</a>
                                         <a href="/inovasi/hapus/{{$ino_step->id}}" class="badge badge-danger">Hapus</a>

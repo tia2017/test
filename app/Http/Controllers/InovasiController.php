@@ -19,7 +19,7 @@ class InovasiController extends Controller
 {
     public function index(Request $request)
     {
-        $data_total = DB::table("innovations")
+        $total = DB::table("innovations")
                     ->select(DB::raw("innovations.id,
                                     step_id,
                                     steps.name as step_name,
@@ -30,13 +30,11 @@ class InovasiController extends Controller
                     ->leftJoin('steps', 'steps.id', '=', 'innovation_steps.step_id')
                     ->groupBy('innovations.id')
                     ->get();
-        $data_steps = Innovation_step::with('innovation')
+        $ino_steps = Innovation_step::with('innovation')
             ->where('progress_persentage', '!=', '0')
             ->where('progress_persentage', '!=', '100')
             ->groupBy('innovation_id')
             ->get();
-
-        $ino_steps = collect([$data_total, $data_steps]);
 
         // $ino_steps = Innovation_step::with('innovation')
         //     ->select('*',DB::raw("SUM(progress_persentage)/6 as persentasi"))
@@ -49,7 +47,7 @@ class InovasiController extends Controller
             ->get();
         
 
-        dd($ino_steps);
+        dd($total);
         return view('inovasi.index', compact('ino_steps','total'));
     }
 

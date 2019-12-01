@@ -58,20 +58,12 @@
 
 <!--BEGIN pop up files -->
 <script>
-    // var modal =  $('.popupimage');
-    // $(document).ready(function(){
-    //    modal.click(function(event){
-    //         event.preventDefault();
-    //         // $('.modal a').attr('href', $(this).attr('href'))
-    //         // $('.modal input').attr('name', $(this).attr('id'))
-    //         // $('.modal input-group input').attr('value', $(this).attr('id'))
-    //         $('.modal').modal('show');
-    //     });
-    // });
-
-    function ShowModal(id) {
-        alert(id);
-    }
+    $(document).ready(function(){
+       $('.myModal').click(function(event){
+           event.preventDefault();
+           $('.modal a').attr('href', $(this).attr('href'))
+        });
+    });
 </script>
 <!-- END pop up -->
 

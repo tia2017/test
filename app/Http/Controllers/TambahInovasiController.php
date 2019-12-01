@@ -54,7 +54,6 @@ class TambahInovasiController extends Controller
             //validate innovations_step
             'step_id' => 'required',
             'explaination' => 'required',
-            'files' => 'required',
             'progress_persentage' => 'required|numeric|min:0|max:100',
             'Mitra.*.Bentuk' => 'required',
             'Mitra.*.Nama' => 'required',
@@ -108,7 +107,7 @@ class TambahInovasiController extends Controller
             elseif($request['step_id']==$i){
 
                 //upload Gambar dan memindakah file ke folder local image
-                if( $request->files != null){
+                if($request->hasFile('files')){
                     // $path = Storage::putFile('public/image',  $request->file('files'));
                     $path = $request->file('files')->store('public/user_');                     
                     $nameFile = $path;

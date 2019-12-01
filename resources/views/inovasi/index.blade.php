@@ -98,7 +98,7 @@
                                 @foreach($ino_steps as $ino_step)
                                 <tr>
                                     <td scope="row">{{$loop->iteration}}</td>
-                                    <td><a href="/inovasi/detail/{{$ino_step->id}}" >{{$ino_step->innovation->name}}</a></td>
+                                    <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}" >{{$ino_step->innovation->name}}</a></td>
                                     <td>{{$ino_step->innovation->institute->name}}</td>
                                     <td>{{$ino_step->step->name}}</td>
                                     <td>{{$ino_step->progress_persentage}}%</td>

@@ -19,7 +19,7 @@ class InovasiController extends Controller
 {
     public function index(Request $request)
     {
-        $total = DB::table("innovations")
+        $data_total = DB::table("innovations")
                     ->select(DB::raw("innovations.id,
                                     step_id,
                                     steps.name as step_name,
@@ -30,11 +30,13 @@ class InovasiController extends Controller
                     ->leftJoin('steps', 'steps.id', '=', 'innovation_steps.step_id')
                     ->groupBy('innovations.id')
                     ->get();
-        $ino_steps = Innovation_step::with('innovation')
+        $data_steps = Innovation_step::with('innovation')
             ->where('progress_persentage', '!=', '0')
             ->where('progress_persentage', '!=', '100')
             ->groupBy('innovation_id')
             ->get();
+
+        $ino_steps = collect([$data_total, $data_steps]);
 
         // $ino_steps = Innovation_step::with('innovation')
         //     ->select('*',DB::raw("SUM(progress_persentage)/6 as persentasi"))
@@ -47,7 +49,7 @@ class InovasiController extends Controller
             ->get();
         
 
-        // dd($persentase);
+        dd($ino_steps);
         return view('inovasi.index', compact('ino_steps','total'));
     }
 
@@ -60,6 +62,7 @@ class InovasiController extends Controller
                 ->orderBy('id', 'asc')
                 ->get();
         // $pathGambar = Storage::url('$step->file');
+        // dd($inovasi);
         return view('inovasi.detail', compact('inovasi','step', 'partner'));
 
         // dibawah ini cara lain return
@@ -116,32 +119,39 @@ class InovasiController extends Controller
             // dd($request->all());
             // Move data file
             $df_file = $request->file('files');
+            // dd($df_file);
             
-            if($request->hasFile('files'))
-            {
-                $key = 0;
-                foreach ($df_file as $file) {
-                    $nameFile[$key] = $file->store('public/user_');
-                    $key++;
-                }
-            }else{
-                $nameFile=null;
-            }
+            // if($request->hasFile('files'))
+            // {
+            //     $key = 0;
+            //     foreach ($df_file as $file) {
+            //         $nameFile[$key] = $file->store('public/user_');
+            //         $key++;
+            //     }
+            // }else{
+            //     $nameFile=null;
+            // }
 
             // Update data tahapan
             for($i=0;$i<=5;$i++){
                 if($request->keterangan[$i]==NULL){
                     $step = Innovation_step::find($request->id_step[$i]);
                     $step->progress_persentage = $request->progress_inovasi[$i];
-                    $step->file = '';
+                    if(@$df_file[$i] != null){
+                        $nameFile = $df_file[$i]->store('public/user_');
+                        $step->file = $nameFile;
+                    }
                     $step->explaination = '';
                     $step->save();
                 }
                 else{
-                    
+                    // dd($i);
                     $step = Innovation_step::find($request->id_step[$i]);
                     $step->progress_persentage = $request->progress_inovasi[$i];
-                    $step->file = $nameFile[$i];
+                    if(@$df_file[$i] != null){
+                        $nameFile = $df_file[$i]->store('public/user_');
+                        $step->file = $nameFile;
+                    }
                     $step->explaination = $request->keterangan[$i];
                     $step->save();
                 }

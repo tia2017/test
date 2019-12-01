@@ -38,7 +38,7 @@
                         <a href="inovasi"><i class="ik ik-rotate-cw"></i></a>
                     </div>
                 </div>
-                <div class="col col-sm-6">
+                <!-- <div class="col col-sm-6">
                     <div class="card-search with-adv-search dropdown">
                         <form action="/inovasi/cari" method="GET">
                             <input type="text" class="form-control global_filter" id="global_filter" name="cari_global" placeholder="Pencarian" required>
@@ -71,7 +71,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-sm-3">
 
                 </div>

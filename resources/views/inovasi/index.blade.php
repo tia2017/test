@@ -104,7 +104,7 @@
                                     <td>{{$ino_step->progres_innov}}%</td>
                                     <td>{{$ino_step->persentasi}}%</td>
                                     <td>
-                                        <a href="/inovasi/edit/{{$ino_step->id}}" class="badge badge-warning">Ubah</a>
+                                        <a href="/inovasi/edit/{{$ino_step->id}}" class="badge badge-success">Ubah</a>
                                         <a href="/inovasi/hapus/{{$ino_step->id}}" class="badge badge-danger">Hapus</a>
                                     </td>
 

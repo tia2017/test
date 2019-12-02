@@ -220,7 +220,7 @@
                                                 <span class="input-group-append">
                                                     <button class="file-upload-browse btn btn-primary" type="button">Unggah</button>
                                                 </span>
-                                                
+
                                             </div>
                                             @if ($errors->any())
                                                 <div class="alert alert-danger">Silahkan Upload File lagi</div>
@@ -302,7 +302,7 @@
                                                         <div class="form-group">
                                                             <label for="bidangMitra" class="col-lg-2 control-label">Bidang Mitra</label>
                                                             <div class="col-lg-10">
-                                                                <input type="text" class="form-control @error('Mitra.*.Nama') is-invalid @enderror" id="bidangMitra" placeholder="Bidang Usaha Mitra yang Melakukan Kerjasama" data-name="Bidang" value="{{old('Mitra.'.$i.'.Bidang') }}">
+                                                                <input type="text" class="form-control @error('Mitra.*.Bidang') is-invalid @enderror" id="bidangMitra" placeholder="Bidang Usaha Mitra yang Melakukan Kerjasama" data-name="Bidang" value="{{old('Mitra.'.$i.'.Bidang') }}">
                                                                 @error('Mitra.*.Bidang')
                                                                 <div class="invalid-feedback">{{$message}}</div>
                                                                 @enderror
@@ -312,7 +312,6 @@
                                                             <label for="alamatMitra" class="col-lg-2 control-label">Alamat Mitra</label>
                                                             <div class="col-lg-10">
                                                                 <textarea class="form-control @error('Mitra.*.Alamat') is-invalid @enderror" id="alamatMitra" placeholder="Alamat Usaha Mitra yang Melakukan Kerjasama" data-name="Alamat">{{old('Mitra.'.$i.'.Alamat')}}</textarea>
-                                                                <!-- <input type="text" class="form-control @error('Mitra.*.Alamat') is-invalid @enderror" id="alamatMitra" placeholder="Alamat Usaha Mitra yang Melakukan Kerjasama" data-name="Alamat" value="{{old('Mitra.'.$i.'.Alamat') }}"> -->
                                                                 @error('Mitra.*.Alamat')
                                                                 <div class="invalid-feedback">{{$message}}</div>
                                                                 @enderror
@@ -330,7 +329,7 @@
                                                         <div class="form-group">
                                                             <label for="emailMitra" class="col-lg-2 control-label">Email Mitra</label>
                                                             <div class="col-lg-10">
-                                                                <input type="text" class="form-control @error('Mitra.*.Notelp') is-invalid @enderror" id="emailMitra" placeholder="Email Mitra yang Melakukan Kerjasama" data-name="Email" value="{{old('Mitra.'.$i.'.Email') }}">
+                                                                <input type="email" class="form-control @error('Mitra.*.Email') is-invalid @enderror" id="emailMitra" placeholder="Email Mitra yang Melakukan Kerjasama" data-name="Email" value="{{old('Mitra.'.$i.'.Email') }}">
                                                                 @error('Mitra.*.Email')
                                                                 <div class="invalid-feedback">{{$message}}</div>
                                                                 @enderror

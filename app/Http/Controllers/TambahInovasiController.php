@@ -59,7 +59,8 @@ class TambahInovasiController extends Controller
             'Mitra.*.Nama' => 'required',
             'Mitra.*.Bidang' => 'required',
             'Mitra.*.Alamat' => 'required',
-            'Mitra.*.Notelp' => 'required'
+            'Mitra.*.Notelp' => 'required',
+            'Mitra.*.Email' => 'required'
 
         ]);
 
@@ -70,7 +71,7 @@ class TambahInovasiController extends Controller
 
         // input innovation_step
         $id_inovasinya = $data->id;
-        // dd($request->Mitra);    
+        // dd($request->Mitra);
         //input partner
         for($i = 0; $i < count($request->Mitra) ;$i++){
             // validate partner
@@ -109,9 +110,9 @@ class TambahInovasiController extends Controller
                 //upload Gambar dan memindakah file ke folder local image
                 if($request->hasFile('files')){
                     // $path = Storage::putFile('public/image',  $request->file('files'));
-                    $path = $request->file('files')->store('public/user_');                     
+                    $path = $request->file('files')->store('public/user_');
                     $nameFile = $path;
-                    // dd($path);                    
+                    // dd($path);
                 } else{
                     $nameFile = null;
                 }
@@ -120,7 +121,7 @@ class TambahInovasiController extends Controller
                     'innovation_id' => $id_inovasinya,
                     'step_id' => $i,
                     'explaination' => $request['explaination'],
-                    'file' => $nameFile,                    
+                    'file' => $nameFile,
                     'progress_persentage' => $request['progress_persentage']
                 ]);
 

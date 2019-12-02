@@ -204,7 +204,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col col-sm-6">
+                <div class="col col-sm-6">
                     <div class="card-search with-adv-search dropdown">
                         <form action="">
                             <input type="text" class="form-control global_filter" id="global_filter" placeholder="Pencarian" required>
@@ -237,7 +237,7 @@
                             </div>
                         </form>
                     </div>
-                </div> -->
+                </div>
                 <div class="col col-sm-3">
                     <div class="card-options text-right">
                         <span class="mr-5" id="top">1 - 50 of 2,500</span>
@@ -258,29 +258,18 @@
                             </th>
                             <th class="nosort">Inovasi</th>
                             <th>Perangkat Daerah</th>
-                            <th>Tahapan</th>
-                            <th>Progres</th>
                             <th>Total Progres</th>
                             <th>Tanggal Buat</th>
-                            <th>Tanggal Ubah</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($ino_steps as $ino_step)
                         <tr>
-                            <td>
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input select_all_child" id="" name="" value="option2">
-                                    <span class="custom-control-label">&nbsp;</span>
-                                </label>
-                            </td>
-                            <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}" >{{$ino_step->innovation->name}}</a></td>
+                            <td scope="row">{{$loop->iteration}}</td>
+                            <td><a href="/inovasi/detail/{{$ino_step->id}}" >{{$ino_step->innovation->name}}</a></td>
                             <td>{{$ino_step->innovation->institute->short_name}}</td>
-                            <td>{{$ino_step->step->name}}</td>
-                            <td>{{$ino_step->progress_persentage}}%</td>                        
-                            <td>70%</td>
-                            <td>{{$ino_step->created_at}}</td>
-                            <td>{{$ino_step->updated_at}}</td>
+                            <td>{{$ino_step->persentasi}}%</td>
+                            <td>{{$ino_step->innovation->created_at}}</td>
                         </tr>
                         @endforeach
 

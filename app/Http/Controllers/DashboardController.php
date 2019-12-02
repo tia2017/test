@@ -14,10 +14,25 @@ class DashboardController extends Controller
 {
     public function index()
     {
-    	$ino_steps = Innovation_step::with('innovation')
-        ->where('progress_persentage', '>', '0')
-        ->where('progress_persentage', '<', '100')
+        $ino_steps = Innovation_step::with('innovation')
+        ->select("*",DB::raw("SUM(progress_persentage)/6 as persentasi"))
+        ->groupBy('innovation_id')
         ->get();
+
+        // print_r($ino_steps."<br>");
+        // die();
+
+        // $ino_steps = DB::table("innovations")
+        //             ->select(DB::raw("innovations.id,
+        //                             step_id,
+        //                             steps.name as step_name,
+        //                             innovations.name as innov_name, 
+        //                             progress_persentage as progres_innov,
+        //                             SUM(progress_persentage)/6 as persentasi"))
+        //             ->leftJoin('innovation_steps', 'innovations.id', '=', 'innovation_steps.innovation_id')
+        //             ->leftJoin('steps', 'steps.id', '=', 'innovation_steps.step_id')
+        //             ->groupBy('innovations.id')
+        //             ->get();
 
         $inovasi = Innovation::all();
     	$jumlah_inovasi = $inovasi->count();

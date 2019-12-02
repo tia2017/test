@@ -21,6 +21,7 @@ class UserController extends Controller
         $df_user = User::query()
          ->join("roles","roles.id","=","users.role_id")
          ->join("users_detail","users_detail.id","=","users.user_id")
+         ->groupBy('users.created_at')
          ->get(['roles.name AS role_name','users.*','users.id as userId']);
 
     	// return data ke view
@@ -39,15 +40,16 @@ class UserController extends Controller
 
         $this->validate($request,[
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'min:6|confirmed',
+            'password_confirmation' => 'min:6|required',
             'role_id' => 'required',
-            'nik' => 'required',
-            'nip' => 'required',
+            'nik' => 'required|regex:/^[0-9]{16}$/',
+            'nip' => 'required|regex:/^[0-9]{16}$/',
             'name' => 'required',
             'address' => 'required',
             'gender' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|regex:/^(0)[0-9]{10,12}$/',
             'institute_id' => 'required',
         ]);
 
@@ -96,6 +98,18 @@ class UserController extends Controller
 
     public function update($id,Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'min:6|confirmed',
+            'password_confirmation' => 'min:6|required',
+            'nik' => 'required|regex:/^[0-9]{16}$/',
+            'nip' => 'required|regex:/^[0-9]{16}$/',
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required|regex:/^(0)[0-9]{10,12}$/',
+        ]);
+
         $users = User::find($id);
         $users->name = $request->name;
         $users->password = Hash::make($request->password);

@@ -21,7 +21,7 @@
                             <li class="breadcrumb-item">
                                 <a href="/dashboard"><i class="ik ik-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active"  aria-current="page">Kelola</li>
+                            <li class="breadcrumb-item active" aria-current="page">Kelola</li>
                         </ol>
                     </nav>
                 </div>
@@ -76,57 +76,84 @@
 
                 </div>
             </div>
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-                        <table id="tableInovasi" class="table text-center">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th>Inovasi</th>
-                                    <th>Perangkat Daerah</th>
-                                    <th>Tahapan</th>
-                                    <th>Progres</th>
-                                    <th>Total Progres</th>
-                                    <th class="sorting_asc_disabled sorting_desc_disabled">Opsi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?= $no=0; ?>
-                                @foreach($ino_steps as $ino_step)
-                                <tr>
-                                    <td scope="row">{{$loop->iteration}}</td>
-                                    <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}" >{{$ino_step->innovation->name}}</a></td>
-                                    <td>{{$ino_step->innovation->institute->name}}</td>
-                                    <td>{{$ino_step->step->name}}</td>
-                                    <td>{{$ino_step->progress_persentage}}%</td>
-                                    <td>{{$total[$no]->persentasi}}%</td>
-                                    <td>
-                                        <a href="/inovasi/edit/{{$ino_step->id}}" class="badge badge-success">Ubah</a>
-                                        <a href="/inovasi/hapus/{{$ino_step->id}}" class="badge badge-danger">Hapus</a>
-                                    </td>
+            <div class="card-body">
+                @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+                @endif
+                <table id="tableInovasi" class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th>Inovasi</th>
+                            <th>Perangkat Daerah</th>
+                            <th>Tahapan</th>
+                            <th>Progres</th>
+                            <th>Total Progres</th>
+                            <th class="sorting_asc_disabled sorting_desc_disabled">Opsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?= $no = 0; ?>
+                        @foreach($ino_steps as $ino_step)
+                        <tr>
+                            <td scope="row">{{$loop->iteration}}</td>
+                            <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}">{{$ino_step->innovation->name}}</a></td>
+                            <td>{{$ino_step->innovation->institute->name}}</td>
+                            <td>{{$ino_step->step->name}}</td>
+                            <td>{{$ino_step->progress_persentage}}%</td>
+                            <td>{{$total[$no]->persentasi}}%</td>
+                            <td>
+                                <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="badge badge-success">Ubah</a>
+                                <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="myModal badge badge-danger" data-toggle="modal" data-target="#myModal-<?php echo $no; // Displaying the increment
+                                                                                                                                                                    ?>">Hapus</a>
+                            </td>
 
-                                    {{-- <td scope="row">{{$loop->iteration}}</td>
-                                        <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}" >{{$ino_step->innovation->name}}</a></td>
-                                        <td>{{$ino_step->innovation->institute->short_name}}</td>
-                                        <td>{{$ino_step->step->name}}</td>
-                                        <td>{{$ino_step->progress_persentage}}%</td>
-                                    {{-- @foreach ($persentase as $persen) --}}
-                                        {{-- <td>{{$persentase}}%</td> --}}
-                                    {{-- @endforeach --}}
-                                        {{-- <td>
+
+                            <div class="modal fade" id="myModal-<?php echo $no; // Displaying the increment 
+                                                                ?>">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Peringatan</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <p>Yakin Ingin Menghapus Data ?</p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <a href="" class="btn badge-danger">Hapus</a>
+                                            <a class="btn btn-secondary" data-dismiss="modal">Batalkan</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- <td scope="row">{{$loop->iteration}}</td>
+                            <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}">{{$ino_step->innovation->name}}</a></td>
+                            <td>{{$ino_step->innovation->institute->short_name}}</td>
+                            <td>{{$ino_step->step->name}}</td>
+                            <td>{{$ino_step->progress_persentage}}%</td>
+                            {{-- @foreach ($persentase as $persen) --}}
+                            {{-- <td>{{$persentase}}%</td> --}}
+                            {{-- @endforeach --}}
+                            {{-- <td>
                                             <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="badge badge-warning">Ubah</a>
-                                            <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="badge badge-danger">Hapus</a>
-                                        </td>  --}}
-                                </tr>
-                                <?= $no+=1; ?>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="badge badge-danger">Hapus</a>
+                            </td> --}}
+                        </tr>
+                        <?= $no += 1; ?>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!-- END::Tabel Data Inovasi -->
 

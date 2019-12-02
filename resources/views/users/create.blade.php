@@ -133,7 +133,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label for="alamat">Alamat</label>
-                                            <textarea name="address" name="alamat" placeholder="Masukkan alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat"></textarea>
+                                            <textarea name="address" name="alamat" placeholder="Masukkan alamat" class="form-control" id="alamat"></textarea>
                                             @error('alamat')
                                                 <div class="invalid-feedback">{{$message}}</div>
                                             @enderror

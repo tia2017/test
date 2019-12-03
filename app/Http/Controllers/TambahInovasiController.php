@@ -14,6 +14,7 @@ use App\Innovation_step;
 use App\Innovation_partner;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
+use Session;
 
 class TambahInovasiController extends Controller
 {
@@ -109,7 +110,7 @@ class TambahInovasiController extends Controller
                 //upload Gambar dan memindakah file ke folder local image
                 if($request->hasFile('files')){
                     // $path = Storage::putFile('public/image',  $request->file('files'));
-                    $path = $request->file('files')->store('public/user_');                     
+                    $path = $request->file('files')->store('public/user_'.session::get('id'));                     
                     $nameFile = $path;
                     // dd($path);                    
                 } else{

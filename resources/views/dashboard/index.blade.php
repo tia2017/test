@@ -160,7 +160,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @foreach($inovasi_institute->innovation as $ino_ino)
+                                <!-- @foreach($inovasi_institute->innovation as $ino_ino)
                                 <div class="row mb-15">
                                     <div class="col-9">
                                         {{$ino_ino->name}}
@@ -175,7 +175,7 @@
                                     </div>
                                     @endforeach
                                 </div>
-                                @endforeach
+                                @endforeach -->
                             </div>
                             @endforeach
                             

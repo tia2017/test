@@ -14,6 +14,7 @@ use App\Institute;
 use App\Pilar;
 use App\Type;
 use Illuminate\Support\Facades\Storage;
+use Session;
 
 class InovasiController extends Controller
 {

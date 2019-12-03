@@ -55,28 +55,31 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="password">Password</label>
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password" name="password" id="password"></input>
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password" name="password" id="password">
                                         @error('password')
                                             <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="repassword">Ulangi Password</label>
-                                        <input type="password" class="form-control" placeholder="Ulangi Password" name="repassword" id="repassword"></input>
+                                        <label for="password_confirmation">Ulangi Password</label>
+                                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Ulangi Password" name="password_confirmation" id="password_confirmation">
+                                        @error('password_confirmation')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="nik">NIK</label>
-                                        <input type="text" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukkan NIK" name="nik" id="nik"></input>
-                                        @error('password')
+                                        <input type="text" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukkan NIK" name="nik" id="nik">
+                                        @error('nik')
                                             <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="nip">NIP</label>
-                                        <input type="text" class="form-control @error('nip') is-invalid @enderror" placeholder="Masukkan NIP" name="nip" id="nip"></input>
-                                        @error('password')
+                                        <input type="text" class="form-control @error('nip') is-invalid @enderror" placeholder="Masukkan NIP" name="nip" id="nip">
+                                        @error('nip')
                                             <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
                                     </div>
@@ -96,7 +99,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="telepon">Nomor Telepon</label>
-                                        <input type="text" class="form-control  @error('phone') is-invalid @enderror" name="phone" placeholder="Ex: 081388932778" name="telepon" id="telepon"></input>
+                                        <input type="text" class="form-control  @error('phone') is-invalid @enderror" name="phone" placeholder="Ex: 081388932778" name="telepon" id="telepon">
                                         @error('phone')
                                             <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
@@ -123,9 +126,6 @@
                                             <div class="custom-control custom-radio">
                                                 <input class="custom-control-input @error('gender') is-invalid @enderror" type="radio" name="gender" id="perem" value="perempuan">
                                                 <label class="custom-control-label" for="perem">Perempuan</label>
-                                                @error('gender')
-                                                    <div class="invalid-feedback">{{$message}}</div>
-                                                @enderror
                                             </div>
                                             {{-- </div> --}}
                                         </div>
@@ -133,7 +133,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label for="address">Alamat</label>
-                                            <textarea name="address" name="address" placeholder="Masukkan alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat"></textarea>
+                                            <textarea name="address" name="address" placeholder="Masukkan alamat" class="form-control @error('address') is-invalid @enderror" id="alamat"></textarea>
                                             @error('address')
                                                 <div class="invalid-feedback">{{$message}}</div>
                                             @enderror

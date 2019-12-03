@@ -40,74 +40,98 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="firstname">Nama</label>
-                                        <input type="text" value="{{ $df_user[0]->name }}" class="form-control" placeholder="Masukkan Nama" name="name" id="nama">
+                                        <input type="text" value="{{ $df_user[0]->name }}" class="form-control @error('name') is-invalid @enderror" placeholder="Masukkan Nama" name="name" id="nama">
+                                        @error('name')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="lastname">Email</label>
-                                        <input type="email" value="{{ $df_user[0]->email }}" class="form-control" placeholder="ex: scinovasi@gmail.com" name="email" id="email">
+                                        <input type="email" value="{{ $df_user[0]->email }}" class="form-control @error('email') is-invalid @enderror" placeholder="ex: scinovasi@gmail.com" name="email" id="email">
+                                        @error('email')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="password">Password</label>
-                                        <input type="password" class="form-control" placeholder="Masukkan Password baru" name="password" id="password">
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password baru" name="password" id="password">
+                                        @error('password')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="repassword">Ulangi Password</label>
-                                        <input type="password" class="form-control" placeholder="Ulangi Password baru" name="repassword" id="repassword">
+                                        <label for="password_confirmation">Ulangi Password</label>
+                                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Ulangi Password baru" name="password_confirmation" id="password_confirmation">
+                                        @error('password_confirmation')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="nik">NIK</label>
-                                        <input type="text" value="{{ $df_user[0]->nik }}" class="form-control" placeholder="Masukan NIK" name="nik" id="nik"></input>
+                                        <input type="text" value="{{ $df_user[0]->nik }}" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" name="nik" id="nik"></input>
+                                        @error('nik')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="nip">NIP</label>
-                                        <input type="text" value="{{ $df_user[0]->nip }}" class="form-control" placeholder="Maukkan NIP" name="nip" id="nip"></input>
+                                        <input type="text" value="{{ $df_user[0]->nip }}" class="form-control @error('nip') is-invalid @enderror" placeholder="Maukkan NIP" name="nip" id="nip"></input>
+                                        @error('nip')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="role">Role</label>
-                                            <select id="role" name="role_id" class="form-control">
-                                                <option>Pilih Role</option>
-                                                @foreach($df_role as $role)
-                                                    <option {{ $df_user[0]->role_id == $role->id ? 'selected="selected"' : '' }} value="{{ $role->id }}">{{$role->name}}</option>
-                                                @endforeach
-                                            </select>
+                                        <select id="role" name="role_id" class="form-control">
+                                            <option>Pilih Role</option>
+                                            @foreach($df_role as $role)
+                                            <option {{ $df_user[0]->role_id == $role->id ? 'selected="selected"' : '' }} value="{{ $role->id }}">{{$role->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="telepon">Nomor Telepon</label>
-                                        <input type="text" value="{{ $df_user[0]->phone }}" class="form-control" name="phone" placeholder="ex:081388932778 atau ex:0215679987" name="telepon" id="telepon"></input>
+                                        <input type="text" value="{{ $df_user[0]->phone }}" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="ex:081388932778 atau ex:0215679987" name="telepon" id="telepon"></input>
+                                        @error('phone')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="role">Institute</label>
-                                            <select id="role" name="institute_id" class="form-control">
+                                        <select id="role" name="institute_id" class="form-control">
                                                 <option>Pilih Institute</option>
                                                 @foreach($df_institute as $institute)
-                                                    <option {{ $df_user[0]->institute_id == $institute->id ? 'selected="selected"' : '' }} value="{{ $institute->id }}">{{$institute->name}}</option>
+                                                <option {{ $df_user[0]->institute_id == $institute->id ? 'selected="selected"' : '' }} value="{{ $institute->id }}">{{$institute->name}}</option>
                                                 @endforeach
                                             </select>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="gender" >Jenis Kelamin</label>
-                                        <div class="form-row" style="margin-left:1px;margin-top:6px">
-                                            <div class="form-check form-check-inline">
-                                                <input {{ $df_user[0]->gender == 'laki-laki' ? 'checked="checked"' : '' }}  class="form-check-input" type="radio" name="gender" id="gender" value="laki-laki">
-                                                <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
-                                                </div>
-                                            <div class="form-check form-check-inline">
-                                                <input {{ $df_user[0]->gender == 'perempuan' ? 'checked="checked"' : '' }} class="form-check-input" type="radio" name="gender" id="gender" value="perempuan">
-                                                <label class="form-check-label" for="inlineRadio2">Perempuan</label>
-                                            </div>
                                         </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="gender" >Jenis Kelamin</label>
+                                            {{-- <div class="form-row" style="margin-left:1px;margin-top:6px"> --}}
+                                            <div class="custom-control custom-radio">
+                                                <input {{ $df_user[0]->gender == 'laki-laki' ? 'checked="checked"' : '' }}  class="custom-control-input" type="radio" name="gender" id="gender" value="laki-laki">
+                                                <label class="custom-control-label" for="inlineRadio1">Laki-Laki</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input {{ $df_user[0]->gender == 'perempuan' ? 'checked="checked"' : '' }} class="custom-control-input" type="radio" name="gender" id="gender" value="perempuan">
+                                                <label class="custom-control-label" for="inlineRadio2">Perempuan</label>
+                                            </div>
+                                        {{-- </div> --}}
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="alamat">Alamat</label>
-                                        <textarea name="address" name="alamat" rows="5" class="form-control" id="alamat">{{ $df_user[0]->address }}</textarea>
+                                        <textarea name="address" name="alamat" rows="5" class="form-control @error('address') is-invalid @enderror" id="alamat">{{ $df_user[0]->address }}</textarea>
+                                        @error('address')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button class="btn btn-success" type="submit">Simpan</button>

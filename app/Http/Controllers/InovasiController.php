@@ -24,7 +24,7 @@ class InovasiController extends Controller
                     ->select(DB::raw("innovations.id,
                                     step_id,
                                     steps.name as step_name,
-                                    innovations.name as innov_name, 
+                                    innovations.name as innov_name,
                                     progress_persentage as progres_innov,
                                     SUM(progress_persentage)/6 as persentasi"))
                     ->leftJoin('innovation_steps', 'innovations.id', '=', 'innovation_steps.innovation_id')
@@ -33,7 +33,7 @@ class InovasiController extends Controller
                     // ->where('progress_persentage', '!=', '100')
                     ->groupBy(['innovations.id'])
                     ->get();
-                    
+
         $ino_steps = Innovation_step::with('innovation')
             ->where('progress_persentage', '!=', '0')
             ->where('progress_persentage', '!=', '100')
@@ -49,7 +49,7 @@ class InovasiController extends Controller
         $id = Innovation_step::with('innovation')
             ->select('innovation_id')
             ->get();
-        
+
 
         // dd($total);
         return view('inovasi.index', compact('ino_steps','total'));
@@ -71,13 +71,13 @@ class InovasiController extends Controller
         // return view('detailInovasi.index', ['detail' => $detail]);
     }
 
-    public function hapus($id){        
+    public function hapus($id){
         $inovasi = Innovation::find($id);
         $file = Innovation_step::where([
             ['innovation_id', $id],
             ['file','!=', null]
             ])->get(['file'])->pluck('file');
-        
+
         // delete file di storage
         foreach($file as $files){
             Storage::disk('local')->delete($files);
@@ -103,6 +103,18 @@ class InovasiController extends Controller
 
     public function store(Request $request){
         if(isset($_POST['master_inovasi'])){
+            $request->validate ([
+                //validate innovation
+                'name' => 'required',
+                'description' => 'required',
+                'benefit' => 'required',
+                'unique_creativity' => 'required',
+                'potency' => 'required',
+                'strategy' => 'required',
+                'risk_analysis' => 'required',
+                'resource' => 'required',
+                'date' => 'required',
+            ]);
             // update master inovasi
             $data = Innovation::where('id', $request->id_inovasi)->update([
                 'name' => $request->innovation,
@@ -122,7 +134,7 @@ class InovasiController extends Controller
             // Move data file
             $df_file = $request->file('files');
             // dd($df_file);
-            
+
             // if($request->hasFile('files'))
             // {
             //     $key = 0;

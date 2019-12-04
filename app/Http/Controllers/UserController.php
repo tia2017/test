@@ -12,33 +12,36 @@ use App\User;
 use App\Users_Detail;
 use App\Role;
 use App\Institute;
+use Session;
 
 class UserController extends Controller
 {
     public function index()
     {
-
-        $df_user = User::query()
-         ->join("roles","roles.id","=","users.role_id")
-         ->join("users_detail","users_detail.id","=","users.user_id")
-         ->groupBy('users.created_at')
-         ->get(['roles.name AS role_name','users.*','users.id as userId']);
-
-    	// return data ke view
-    	return view('users.index', compact('df_user'));
+        if (!Session::get('login')) {
+            return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
+        } else {
+            $df_user = User::query()
+             ->join("roles", "roles.id", "=", "users.role_id")
+             ->join("users_detail", "users_detail.id", "=", "users.user_id")
+             ->groupBy('users.created_at')
+             ->get(['roles.name AS role_name','users.*','users.id as userId']);
+    
+            // return data ke view
+            return view('users.index', compact('df_user'));
+        }
     }
 
     public function create()
     {
         $df_role = Role::get();
         $df_institute = Institute::get();
-        return view('users.create', compact('df_role','df_institute'));
+        return view('users.create', compact('df_role', 'df_institute'));
     }
 
-    public function store(Request $request){
-
-
-        $this->validate($request,[
+    public function store(Request $request)
+    {
+        $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'min:6|confirmed',
@@ -84,7 +87,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $df_user = User::query()
-        ->leftJoin("users_detail","users_detail.id","=","users.user_id")
+        ->leftJoin("users_detail", "users_detail.id", "=", "users.user_id")
         ->where('users.id', '=', $id)
         ->get(['*','users.id as userId']);
 
@@ -92,13 +95,12 @@ class UserController extends Controller
         $df_institute = Institute::get();
         // print_r($df_user);
 
-        return view('users.update', compact('df_user','df_role','df_institute'));
-
+        return view('users.update', compact('df_user', 'df_role', 'df_institute'));
     }
 
-    public function update($id,Request $request)
+    public function update($id, Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'min:6|confirmed',
@@ -138,18 +140,18 @@ class UserController extends Controller
         $users = User::find($id);
 
 
-        if($this->delete_detail($users->user_id)){
+        if ($this->delete_detail($users->user_id)) {
             $users->delete();
         }
         return redirect('/users');
     }
 
-    public function delete_detail($id){
+    public function delete_detail($id)
+    {
         $details = Users_Detail::find($id);
 
         $details->delete();
 
         return true;
     }
-
 }

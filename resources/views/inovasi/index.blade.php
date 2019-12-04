@@ -98,15 +98,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?= $no = 0; ?>
+                        <?php 
+                        $no = 0; 
+                        ?>
                         @foreach($ino_steps as $ino_step)
+                        <!--validasi inovasi step == total Memberi Total Progres per step -->
+                        <?php
+                            foreach($totals as $key_total => $total){
+                                if($ino_step->id == $total->innov_step_id){
+                                    $tmp_total = $total;
+                                }
+                            }
+                        ?>
                         <tr>
                             <td scope="row">{{$loop->iteration}}</td>
                             <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}">{{$ino_step->innovation->name}}</a></td>
                             <td>{{$ino_step->innovation->institute->name}}</td>
                             <td>{{$ino_step->step->name}}</td>
                             <td>{{$ino_step->progress_persentage}}%</td>
-                            <td>{{$total[$no]->persentasi}}%</td>
+                            <td>{{$tmp_total->persentasi}}%</td>
                             <td>
                                 <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="badge badge-success">Ubah</a>
                                 <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="myModal badge badge-danger" data-toggle="modal" data-target="#myModal-<?php echo $no; // Displaying the increment

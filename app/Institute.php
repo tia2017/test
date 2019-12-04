@@ -10,4 +10,9 @@ class institute extends Model
     {
         return $this->hasMany(Innovation::class);
     }
+
+    public function users_detail()
+    {
+        return $this->hasMany(Users_Detail::class, 'insitute_id');
+    }
 }

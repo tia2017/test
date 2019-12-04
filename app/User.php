@@ -9,9 +9,9 @@ class User extends Model
     //
     protected $fillable = ['name','email','password','user_id','role_id','remember_token'];
 
-    public function user_details()
+    public function users_detail()
     {
-    	return $this->belongsTo('App\User_Detail');
+    	return $this->belongsTo(Users_Detail::class, 'user_id');
     }
 
     public function roles()

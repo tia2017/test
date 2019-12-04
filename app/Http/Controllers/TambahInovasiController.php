@@ -24,7 +24,9 @@ class TambahInovasiController extends Controller
         $type = Type::all();
         $pilar = Pilar::all();
         $step = Step::all();
-        return view('tambahInovasi.index', compact('institute', 'type', 'pilar', 'step'));
+        $users_detail = Session::get('users_detail');
+        // dd($users_detail->institute);
+        return view('tambahInovasi.index', compact('institute', 'type', 'pilar', 'step', 'users_detail'));
     }
 
     public function store(Request $request)
@@ -66,7 +68,7 @@ class TambahInovasiController extends Controller
         ]);
 
         //encode id user
-        $request->created_by =  base64_decode($request->created_by);
+        // $request->created_by =  base64_decode($request->created_by);
         // input innovation
         $data = Innovation::create($request->all());
 
@@ -111,7 +113,7 @@ class TambahInovasiController extends Controller
                 //upload Gambar dan memindakah file ke folder local image
                 if($request->hasFile('files')){
                     // $path = Storage::putFile('public/image',  $request->file('files'));
-                    $path = $request->file('files')->store('public/user_'.session::get('id'));                     
+                    $path = $request->file('files')->store('public/user_'.Session::get('id'));                     
                     $nameFile = $path;
                     // dd($path);
                 } else{

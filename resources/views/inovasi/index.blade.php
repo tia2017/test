@@ -82,6 +82,9 @@
                     {{ session('status') }}
                 </div>
                 @endif
+                <?=
+                    $user = Session::get('data_2');
+                ?>
                 <table id="tableInovasi" class="table text-center">
                     <thead>
                         <tr>

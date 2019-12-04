@@ -39,8 +39,15 @@ class InovasiController extends Controller
     
             $ino_steps = Innovation_step::with('innovation')
                 ->where('progress_persentage', '!=', '0')
+               ->where('progress_persentage', '!=', '100')
                 // ->groupBy('innovation_id')
                 ->get();
+    
+            $ino_steps_seratus = Innovation_step::with('innovation')
+          ->where('progress_persentage', '!=', '0')
+           ->where('progress_persentage', '=', '100')
+                // ->groupBy('innovation_id')
+            ->get();
     
             // dd($total);
     
@@ -56,7 +63,7 @@ class InovasiController extends Controller
     
     
             // dd($total);
-            return view('inovasi.index', compact('ino_steps', 'totals'));
+            return view('inovasi.index', compact('ino_steps', 'totals','ino_steps_seratus'));
         }
     }
 

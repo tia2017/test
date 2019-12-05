@@ -7,13 +7,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-
 use App\User;
 
 class Auth extends Controller
 {
     public function index()
-    { }
+    {
+        if (!Session::get('login')) {
+            return view('login')->with('alert', 'Silahkan Login Kembali !');
+        }else{
+            return redirect('/dashboard');
+        }
+    }
 
     public function login(Request $request)
     {

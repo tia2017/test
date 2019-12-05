@@ -120,7 +120,7 @@
                             <td>
                                 <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="badge badge-success">Ubah</a>
                                 <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="myModal badge badge-danger" data-toggle="modal" data-target="#myModal-<?php echo $no; // Displaying the increment
-                                                                                                                                                                    ?>">Hapus</a>
+                                ?>">Hapus</a>
                             </td>
 
 

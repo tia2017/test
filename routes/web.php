@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', 'Auth@index');
+// Route::get('/', function () {
+//     return view('login');
+// });
 
 //Dashboard
 // Route::get('/dashboard', 'Dashboard@index');

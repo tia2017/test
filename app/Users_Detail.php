@@ -16,4 +16,9 @@ class Users_Detail extends Model
     {
     	return $this->hasOne('App\User');
     }
+
+    public function institute()
+    {
+    	return $this->belongsTo(Institute::class);
+    }
 }

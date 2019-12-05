@@ -55,8 +55,7 @@
                 @endif                        -->
 
                     <div class="col-md-12">
-                        <form class="forms-sample" action="/tambah-inovasi" method="post" enctype='multipart/form-data'>
-                            <!-- <input type="hidden" name="created_by" value="{{Session::get('id')}}">         -->
+                        <form class="forms-sample" action="/tambah-inovasi" method="post" enctype='multipart/form-data'>                            
                             <input type="hidden" name="created_by" value="{{Session::get('id')}}">
                             <input type="hidden" name="verification_status" value="True">
 
@@ -78,11 +77,15 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label for="perangkatDaerah">Perangkat Daerah</label>
-                                            <select class="form-control @error('institute_id') is-invalid @enderror" placeholder="Perangkat Daerah" id="perangkatDaerah" name="institute_id">
-                                                @foreach($institute as $ins_data)
-                                                <option value="{{$loop->iteration}}">{{$ins_data->short_name}}</option>
-                                                @endforeach
-
+                                            <select class="form-control @error('institute_id') is-invalid @enderror" placeholder="Perangkat Daerah" id="perangkatDaerah" name="institute_id">                                             
+                                                @if(Session::get('role') == 2)
+                                                    @foreach($institute as $ins_data)
+                                                        <option value="{{$ins_data->id}}">{{$ins_data->name}}</option>
+                                                    @endforeach
+                                                @else
+                                                    <option value="{{$users_detail->institute_id}}">{{$users_detail->institute->name}}</option>
+                                                @endif
+                                          
                                                 @error('institute_id')
                                                 <div class="invalid-feedback">{{$message}}</div>
                                                 @enderror
@@ -223,7 +226,7 @@
 
                                             </div>
                                             @if ($errors->any())
-                                                <div class="alert alert-danger">Silahkan Upload File lagi</div>
+                                            <div class="alert alert-danger">Silahkan Upload File lagi</div>
                                             @endif
                                         </div>
                                     </div>

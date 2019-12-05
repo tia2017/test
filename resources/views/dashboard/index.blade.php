@@ -74,7 +74,7 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header"><h3>Distribusi Perkembangan</h3></div>
-                    
+
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-lg-12 col-md-12">
@@ -180,7 +180,7 @@
                                 @endforeach -->
                             </div>
                             @endforeach
-                            
+
                             <!-- END::Kolom  -->
                         </div>
                     </div>
@@ -194,71 +194,17 @@
             <div class="card-header row">
                 <div class="col col-sm-3">
                     <div class="card-options d-inline-block">
-                        <a href="#"><i class="ik ik-inbox"></i></a>
-                        <a href="#"><i class="ik ik-plus"></i></a>
-                        <a href="#"><i class="ik ik-rotate-cw"></i></a>
-                        <div class="dropdown d-inline-block">
-                            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-more-horizontal"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="moreDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">More Action</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-sm-6">
-                    <div class="card-search with-adv-search dropdown">
-                        <form action="">
-                            <input type="text" class="form-control global_filter" id="global_filter" placeholder="Pencarian" required>
-                            <button type="submit" class="btn btn-icon"><i class="ik ik-search"></i></button>
-                            <button type="button" id="adv_wrap_toggler" class="adv-btn ik ik-chevron-down dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                            <div class="adv-search-wrap dropdown-menu dropdown-menu-right" aria-labelledby="adv_wrap_toggler">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control column_filter" id="col0_filter" placeholder="Inovasi" data-column="0">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control column_filter" id="col1_filter" placeholder="Perangkat Daerah/Dewan Smart City" data-column="1">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control column_filter" id="col2_filter" placeholder="Tahun" data-column="2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control column_filter" id="col3_filter" placeholder="Bulan" data-column="3">
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn btn-theme">Cari</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col col-sm-3">
-                    <div class="card-options text-right">
-                        <span class="mr-5" id="top">1 - 50 of 2,500</span>
-                        <a href="#"><i class="ik ik-chevron-left"></i></a>
-                        <a href="#"><i class="ik ik-chevron-right"></i></a>
+                        <a href="/tambah-inovasi"><i class="ik ik-plus"></i></a>
+                        <a href="/dashboard"><i class="ik ik-rotate-cw"></i></a>
                     </div>
                 </div>
             </div>
             <div class="card-body">
-                <table id="advanced_table" class="table">
+                <table id="tableDashboard" class="table text-center">
                     <thead>
                         <tr>
-                            <th class="nosort" width="10">
-                                <label class="custom-control custom-checkbox m-0">
-                                    <input type="checkbox" class="custom-control-input" id="selectall" name="" value="option2">
-                                    <span class="custom-control-label">&nbsp;</span>
-                                </label>
-                            </th>
-                            <th class="nosort">Inovasi</th>
+                            <th>No</th>
+                            <th>Inovasi</th>
                             <th>Perangkat Daerah</th>
                             <th>Total Progres</th>
                             <th>Tanggal Buat</th>
@@ -270,8 +216,8 @@
                             <td scope="row">{{$loop->iteration}}</td>
                             <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}" >{{$ino_step->innovation->name}}</a></td>
                             <td>{{$ino_step->innovation->institute->short_name}}</td>
-                            <td>{{$ino_step->persentasi}}%</td>
-                            <td>{{$ino_step->innovation->created_at}}</td>
+                            <td>{{number_format($ino_step->persentasi, 1, '.', ',')}}%</td>
+                            <td>{{date("d M Y", strtotime($ino_step->innovation->created_at))}}</td>
                         </tr>
                         @endforeach
 
@@ -283,7 +229,11 @@
 
     </div>
 </div>
-
+<script>
+    $(document).ready(function() {
+        $('#tableDashboard').DataTable();
+    });
+</script>
 <script>
         var url = "{{url('dashboard/donut')}}";
         var Years = new Array();
@@ -292,22 +242,22 @@
         $(document).ready(function(){
           $.get(url, function(response){
             // console.log(response.kurang)
-            
+
             var datanya = [
                 ['Kurang dari 30 Hari'],
                 ['Lebih dari 90 Hari'],
                 ['Antara 30 - 90 Hari'],
             ]
 
-            for (var i = 0; i < response.kurang.length; i++) {                
+            for (var i = 0; i < response.kurang.length; i++) {
                 datanya[0][i+1] = response.kurang[i];
             }
 
-            for (var i = 0; i < response.antara.length; i++) {                
+            for (var i = 0; i < response.antara.length; i++) {
                 datanya[2][i+1] = response.kurang[i];
             }
 
-            for (var i = 0; i < response.lebih.length; i++) {                
+            for (var i = 0; i < response.lebih.length; i++) {
                 datanya[1][i+1] = response.kurang[i];
             }
 

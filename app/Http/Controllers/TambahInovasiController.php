@@ -20,23 +20,21 @@ class TambahInovasiController extends Controller
 {
     public function create()
     {
-        $institute = Institute::all();
-        $type = Type::all();
-        $pilar = Pilar::all();
-        $step = Step::all();
-        return view('tambahInovasi.index', compact('institute', 'type', 'pilar', 'step'));
+        if (!Session::get('login')) {
+            return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
+        } else {
+            $institute = Institute::all();
+            $type = Type::all();
+            $pilar = Pilar::all();
+            $step = Step::all();
+            $users_detail = Session::get('users_detail');
+            // dd($users_detail->institute);
+            return view('tambahInovasi.index', compact('institute', 'type', 'pilar', 'step', 'users_detail'));
+        }
     }
 
     public function store(Request $request)
     {
-
-        // dd($request->files->getRealPath());
-        // dd($request->all());
-        // echo "<pre>";
-        // print_r($_POST);
-        // die();
-
-
         $request->validate ([
             //validate innovation
             'name' => 'required',
@@ -60,16 +58,14 @@ class TambahInovasiController extends Controller
             'Mitra.*.Nama' => 'required',
             'Mitra.*.Bidang' => 'required',
             'Mitra.*.Alamat' => 'required',
-            'Mitra.*.Notelp' => 'required',
-            'Mitra.*.Email' => 'required'
-
+            'Mitra.*.Notelp' => 'required|regex:/^(0)[0-9]{10,12}$/',
+            'Mitra.*.Email' => 'required|email'
         ]);
 
         //encode id user
-        $request->created_by =  base64_decode($request->created_by);
+        // $request->created_by =  base64_decode($request->created_by);
         // input innovation
         $data = Innovation::create($request->all());
-
         // input innovation_step
         $id_inovasinya = $data->id;
         // dd($request->Mitra);
@@ -110,8 +106,8 @@ class TambahInovasiController extends Controller
 
                 //upload Gambar dan memindakah file ke folder local image
                 if($request->hasFile('files')){
-                    // $path = Storage::putFile('public/image',  $request->file('files'));
-                    $path = $request->file('files')->store('public/user_'.session::get('id'));                     
+                    $path = Storage::disk('')->putFile('public/files', $request->file('files')) ;
+                    // $path = $request->file('files')->store('public/files');                     
                     $nameFile = $path;
                     // dd($path);
                 } else{

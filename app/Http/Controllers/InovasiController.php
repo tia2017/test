@@ -27,7 +27,7 @@ class InovasiController extends Controller
                                         innovation_steps.id as innov_step_id,
                                         step_id,
                                         steps.name as step_name,
-                                        innovations.name as innov_name, 
+                                        innovations.name as innov_name,
                                         progress_persentage as progres_innov,
                                         SUM(progress_persentage)/6 as persentasi"))
                 ->leftJoin('innovation_steps', 'innovations.id', '=', 'innovation_steps.innovation_id')
@@ -36,14 +36,21 @@ class InovasiController extends Controller
                 // ->where('progress_persentage', '!=', '100')
                 ->groupBy(['innovations.id'])
                 ->get();
-    
+
             $ino_steps = Innovation_step::with('innovation')
                 ->where('progress_persentage', '!=', '0')
-                ->groupBy('innovation_id')
+               ->where('progress_persentage', '!=', '100')
+                // ->groupBy('innovation_id')
                 ->get();
-    
+
+            $ino_steps_seratus = Innovation_step::with('innovation')
+          ->where('progress_persentage', '!=', '0')
+           ->where('progress_persentage', '=', '100')
+                // ->groupBy('innovation_id')
+            ->get();
+
             // dd($total);
-    
+
             // $ino_steps = Innovation_step::with('innovation')
             //     ->select('*',DB::raw("SUM(progress_persentage)/6 as persentasi"))
             //     ->where('progress_persentage', '!=', '0')
@@ -53,10 +60,10 @@ class InovasiController extends Controller
             $id = Innovation_step::with('innovation')
                 ->select('innovation_id')
                 ->get();
-    
-    
+
+
             // dd($total);
-            return view('inovasi.index', compact('ino_steps', 'totals'));
+            return view('inovasi.index', compact('ino_steps', 'totals','ino_steps_seratus'));
         }
     }
 
@@ -109,9 +116,20 @@ class InovasiController extends Controller
     }
 
 
-    public function store(Request $request)
-    {
-        if (isset($_POST['master_inovasi'])) {
+    public function store(Request $request){
+        if(isset($_POST['master_inovasi'])){
+            $request->validate ([
+                //validate innovation
+                'name' => 'required',
+                'description' => 'required',
+                'benefit' => 'required',
+                'unique_creativity' => 'required',
+                'potency' => 'required',
+                'strategy' => 'required',
+                'risk_analysis' => 'required',
+                'resource' => 'required',
+                'date' => 'required',
+            ]);
             // update master inovasi
             $data = Innovation::where('id', $request->id_inovasi)->update([
                 'name' => $request->innovation,

@@ -152,7 +152,9 @@
                             @foreach($semua_inovasi as $inovasi_institute)
                             <div class="col-lg-2 col-md-12">
                                 <div class="row mb-15">
-                                    <div class="col-9">{{ $inovasi_institute->short_name }} (Satuan)</div>
+                                    <div class="col-9">{{ $inovasi_institute->short_name }}
+                                        <br>{{ $inovasi_institute->innovation_count / $jumlah_inovasi * 100}} (%)
+                                    </div>
                                     <div class="col-3 text-right"></div>
                                     <div class="col-12">
                                         <div class="progress progress-sm mt-5">
@@ -266,7 +268,7 @@
                         @foreach($ino_steps as $ino_step)
                         <tr>
                             <td scope="row">{{$loop->iteration}}</td>
-                            <td><a href="/inovasi/detail/{{$ino_step->id}}" >{{$ino_step->innovation->name}}</a></td>
+                            <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}" >{{$ino_step->innovation->name}}</a></td>
                             <td>{{$ino_step->innovation->institute->short_name}}</td>
                             <td>{{$ino_step->persentasi}}%</td>
                             <td>{{$ino_step->innovation->created_at}}</td>

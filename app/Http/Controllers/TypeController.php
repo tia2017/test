@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 use App\Type;
 
@@ -12,9 +13,13 @@ class TypeController extends Controller
 {
     public function index()
     {
-        $df_type = Type::query()->get(['*']);
-
-        return view('types.index', compact('df_type'));
+        if (!Session::get('login')) {
+            return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
+        } else {
+            $df_type = Type::query()->get(['*']);
+    
+            return view('types.index', compact('df_type'));
+        }
     }
 
     public function create()

@@ -79,10 +79,7 @@
                                         <div class="col-md-4">
                                             <label for="perangkatDaerah">Perangkat Daerah</label>
                                             <select class="form-control @error('institute_id') is-invalid @enderror" placeholder="Perangkat Daerah" id="perangkatDaerah" name="institute_id">
-                                                @foreach($institute as $ins_data)
-                                                <option value="{{$loop->iteration}}">{{$ins_data->short_name}}</option>
-                                                @endforeach
-
+                                                <option value="{{$users_detail->institute_id}}">{{$users_detail->institute->name}}</option>
                                                 @error('institute_id')
                                                 <div class="invalid-feedback">{{$message}}</div>
                                                 @enderror
@@ -223,7 +220,7 @@
 
                                             </div>
                                             @if ($errors->any())
-                                                <div class="alert alert-danger">Silahkan Upload File lagi</div>
+                                            <div class="alert alert-danger">Silahkan Upload File lagi</div>
                                             @endif
                                         </div>
                                     </div>

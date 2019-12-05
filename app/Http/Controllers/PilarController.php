@@ -21,8 +21,9 @@ class PilarController extends Controller
 
     public function index()
     {
+        
         if(!Session::get('login')){
-            return redirect('/')->with('alert','Kamu harus login dulu');
+            return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
         }
         else{
             $df_pilar = Pilar::query()->get(['*']);

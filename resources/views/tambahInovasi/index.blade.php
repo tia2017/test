@@ -77,8 +77,15 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label for="perangkatDaerah">Perangkat Daerah</label>
-                                            <select class="form-control @error('institute_id') is-invalid @enderror" placeholder="Perangkat Daerah" id="perangkatDaerah" name="institute_id">
-                                                <option value="{{$users_detail->institute_id}}">{{$users_detail->institute->name}}</option>
+                                            <select class="form-control @error('institute_id') is-invalid @enderror" placeholder="Perangkat Daerah" id="perangkatDaerah" name="institute_id">                                             
+                                                @if(Session::get('role') == 2)
+                                                    @foreach($institute as $ins_data)
+                                                        <option value="{{$ins_data->id}}">{{$ins_data->name}}</option>
+                                                    @endforeach
+                                                @else
+                                                    <option value="{{$users_detail->institute_id}}">{{$users_detail->institute->name}}</option>
+                                                @endif
+                                          
                                                 @error('institute_id')
                                                 <div class="invalid-feedback">{{$message}}</div>
                                                 @enderror

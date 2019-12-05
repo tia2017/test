@@ -14,7 +14,7 @@ class Auth extends Controller
     public function index()
     {
         if (!Session::get('login')) {
-            return view('login')->with('alert', 'Silahkan Login Kembali !');
+            return view('login');
         }else{
             return redirect('/dashboard');
         }

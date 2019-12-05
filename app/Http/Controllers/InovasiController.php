@@ -39,7 +39,7 @@ class InovasiController extends Controller
     
             $ino_steps = Innovation_step::with('innovation')
                 ->where('progress_persentage', '!=', '0')
-                // ->groupBy('innovation_id')
+                ->groupBy('innovation_id')
                 ->get();
     
             // dd($total);
@@ -149,7 +149,7 @@ class InovasiController extends Controller
                     $step = Innovation_step::find($request->id_step[$i]);
                     $step->progress_persentage = $request->progress_inovasi[$i];
                     if (@$df_file[$i] != null) {
-                        $nameFile = $df_file[$i]->store('public/user_' . session::get('id'));
+                        $nameFile = Storage::disk('')->putFile('public/files', $df_file[$i]) ;
                         $step->file = $nameFile;
                     }
                     $step->explaination = '';
@@ -159,7 +159,9 @@ class InovasiController extends Controller
                     $step = Innovation_step::find($request->id_step[$i]);
                     $step->progress_persentage = $request->progress_inovasi[$i];
                     if (@$df_file[$i] != null) {
-                        $nameFile = $df_file[$i]->store('public/user_' . session::get('id'));
+                        // $nameFile = Storage::putFile('public/files', $df_file[$i]);
+                        $nameFile = Storage::disk('')->putFile('public/files', $df_file[$i]) ;
+                        // $nameFile = $df_file[$i]->store('public/files');
                         $step->file = $nameFile;
                     }
                     $step->explaination = $request->keterangan[$i];

@@ -55,8 +55,7 @@
                 @endif                        -->
 
                     <div class="col-md-12">
-                        <form class="forms-sample" action="/tambah-inovasi" method="post" enctype='multipart/form-data'>
-                            <!-- <input type="hidden" name="created_by" value="{{Session::get('id')}}">         -->
+                        <form class="forms-sample" action="/tambah-inovasi" method="post" enctype='multipart/form-data'>                            
                             <input type="hidden" name="created_by" value="{{Session::get('id')}}">
                             <input type="hidden" name="verification_status" value="True">
 

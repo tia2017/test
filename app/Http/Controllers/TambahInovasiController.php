@@ -116,8 +116,8 @@ class TambahInovasiController extends Controller
 
                 //upload Gambar dan memindakah file ke folder local image
                 if($request->hasFile('files')){
-                    // $path = Storage::putFile('public/image',  $request->file('files'));
-                    $path = $request->file('files')->store('public/user_'.Session::get('id'));                     
+                    $path = Storage::putFile('public/image',  $request->file('files'));
+                    $path = $request->file('files')->store('public/files');                     
                     $nameFile = $path;
                     // dd($path);
                 } else{

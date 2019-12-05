@@ -65,6 +65,7 @@
         });
     });
 </script>
+
 <!-- END pop up -->
 
 <!-- BEGIN disable and enabled progress -->

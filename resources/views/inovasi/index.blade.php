@@ -68,11 +68,11 @@
                         @foreach($ino_steps as $ino_step)
                         <!--validasi inovasi step == total Memberi Total Progres per step -->
                         <?php
-                            foreach($totals as $key_total => $total){
-                                if($ino_step->id == $total->innov_step_id){
-                                    $tmp_total = $total;
-                                }
-                            }
+                            // foreach($totals as $key_total => $total){
+                            //     if($ino_step->id == $total->innov_step_id){
+                            //         $tmp_total = $total;
+                            //     }
+                            // }
                         ?>
                         <tr>
                             <td scope="row">{{$loop->iteration}}</td>
@@ -239,8 +239,7 @@
                         $nom = $no; 
                         ?>
                         @foreach($ino_steps2 as $ino_step)
-                        <!--validasi inovasi step == total Memberi Total Progres per step -->
-                       
+                        <!--validasi inovasi step == total Memberi Total Progres per step -->                       
                         <tr>
                             <td scope="row">{{$loop->iteration}}</td>
                             <td><a href="/inovasi/detail/{{$ino_step->innovation->id}}">{{$ino_step->innovation->name}}</a></td>

@@ -53,17 +53,24 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <label for="namaInovasi">Nama Singkat Inovasi</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="namaInovasi" name="innovation" value="{{ $inovasi->name }}">
-                                        @error('name')
+                                        <input type="text" class="form-control @error('innovation') is-invalid @enderror" id="namaInovasi" name="innovation" value="{{ $inovasi->name }}">
+                                        @error('innovation')
                                         <div class="invalid-feedback">{{$message}}</div>
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
                                         <label for="perangkatDaerah">Perangkat Daerah</label>
                                         <select class="form-control" id="perangkatDaerah" name="institute">
-                                            @foreach($df_institute as $institute)
-                                            <option {{ $inovasi->institute_id == $institute->id ? 'selected="selected"' : '' }} value="{{$institute->id}}">{{$institute->short_name}}</option>
-                                            @endforeach
+                                            @if (Session::get('role') == 2)
+                                                @foreach($df_institute as $institute)
+                                                <option {{ $inovasi->institute_id == $institute->id ? 'selected="selected"' : '' }} value="{{$institute->id}}">{{$institute->short_name}}</option>
+                                                @endforeach
+                                            @else  
+                                                @foreach($df_institute as $institute)
+                                                <option {{ $inovasi->institute_id == $institute->id ? 'selected="selected"' : '' }} value="{{$institute->id}}">{{$institute->short_name}}</option>
+                                                @endforeach
+                                            @endif
+                                            
                                         </select>
                                     </div>
                                 </div>

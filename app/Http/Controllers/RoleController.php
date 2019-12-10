@@ -14,10 +14,12 @@ class RoleController extends Controller
     {
         if (!Session::get('login')) {
             return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
-        } else {
+        } elseif(Session::get('role') == 2) {
             $df_role = Role::query()->get(['*']);
     
             return view('roles.index', compact('df_role'));
+        } else{
+            return redirect('dashboard');
         }
     }
 

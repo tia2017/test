@@ -24,11 +24,12 @@ class PilarController extends Controller
         
         if(!Session::get('login')){
             return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
-        }
-        else{
+        } elseif(Session::get('role') == 2){
             $df_pilar = Pilar::query()->get(['*']);
 
             return view('pilars.index', compact('df_pilar'));
+        } else{
+            return redirect('dashboard');
         }
 
     }

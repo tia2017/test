@@ -15,10 +15,12 @@ class TypeController extends Controller
     {
         if (!Session::get('login')) {
             return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
-        } else {
+        } elseif(Session::get('role') == 2) {
             $df_type = Type::query()->get(['*']);
     
             return view('types.index', compact('df_type'));
+        } else{
+            return redirect('dashboard');
         }
     }
 

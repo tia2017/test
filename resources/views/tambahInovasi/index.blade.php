@@ -80,10 +80,11 @@
                                             <select class="form-control @error('institute_id') is-invalid @enderror" placeholder="Perangkat Daerah" id="perangkatDaerah" name="institute_id">                                             
                                                 @if(Session::get('role') == 2)
                                                     @foreach($institute as $ins_data)
-                                                        <option value="{{$ins_data->id}}">{{$ins_data->name}}</option>
+                                                        <option {{$users_detail->institute_id == $ins_data->id ? 'selected="selected"' : '' }} value="{{$ins_data->id}}">{{$ins_data->short_name}}</option>  
+                                                        {{-- <option value="{{$ins_data->id}}">{{$ins_data->name}}</option> --}}
                                                     @endforeach
                                                 @else
-                                                    <option value="{{$users_detail->institute_id}}">{{$users_detail->institute->name}}</option>
+                                                    <option value="{{$users_detail->institute_id}}">{{$users_detail->institute->short_name}}</option>
                                                 @endif
                                           
                                                 @error('institute_id')

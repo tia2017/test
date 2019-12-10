@@ -22,9 +22,12 @@ class InovasiController extends Controller
         if (!Session::get('login')) {
             return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
         } else {
+            $id_ins_user = Session::get('users_detail')->institute_id;
+            // dd($id_ins_user);
             $totals = DB::table("innovations")
                 ->select(DB::raw("innovations.id,
                                         innovation_steps.id as innov_step_id,
+                                        innovations.institute_id,
                                         step_id,
                                         steps.name as step_name,
                                         innovations.name as innov_name,
@@ -32,14 +35,16 @@ class InovasiController extends Controller
                                         SUM(progress_persentage)/6 as persentasi"))
                 ->leftJoin('innovation_steps', 'innovations.id', '=', 'innovation_steps.innovation_id')
                 ->leftJoin('steps', 'steps.id', '=', 'innovation_steps.step_id')
-                // ->where('progress_persentage', '!=', '0')
+                // ->where('institute_id', '=', $id_ins_user)
                 // ->where('progress_persentage', '!=', '100')
                 ->groupBy(['innovations.id'])
                 ->get();
 
+            // dd($totals);
             $ino_steps = Innovation_step::with('innovation')
                 ->where('progress_persentage', '!=', '0')
                 ->where('progress_persentage', '!=', '100')
+                // ->where
                 ->groupBy('innovation_id')
                 ->get();
 
@@ -101,7 +106,6 @@ class InovasiController extends Controller
 
         // delete semua inovasi
         $inovasi->delete();
-
         return redirect('inovasi')->with('status', 'Data Inovasi Berhasil Dihapus');
     }
 
@@ -120,9 +124,10 @@ class InovasiController extends Controller
 
     public function store(Request $request){
         if(isset($_POST['master_inovasi'])){
+            // dd($request->all());
             $request->validate ([
                 //validate innovation
-                'name' => 'required',
+                'innovation' => 'required',
                 'description' => 'required',
                 'benefit' => 'required',
                 'unique_creativity' => 'required',
@@ -135,6 +140,7 @@ class InovasiController extends Controller
             // update master inovasi
             $data = Innovation::where('id', $request->id_inovasi)->update([
                 'name' => $request->innovation,
+                'institute_id' => $request->institute,
                 'description' => $request->description,
                 'benefit' => $request->benefit,
                 'unique_creativity' => $request->unique_creativity,

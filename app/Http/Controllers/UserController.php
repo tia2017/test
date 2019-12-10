@@ -20,15 +20,18 @@ class UserController extends Controller
     {
         if (!Session::get('login')) {
             return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
-        } else {
-            $df_user = User::query()
-             ->join("roles", "roles.id", "=", "users.role_id")
-             ->join("users_detail", "users_detail.id", "=", "users.user_id")
-             ->groupBy('users.created_at')
-             ->get(['roles.name AS role_name','users.*','users.id as userId']);
-    
-            // return data ke view
-            return view('users.index', compact('df_user'));
+        } elseif(Session::get('role') == 2) {
+            
+                $df_user = User::query()
+                 ->join("roles", "roles.id", "=", "users.role_id")
+                 ->join("users_detail", "users_detail.id", "=", "users.user_id")
+                 ->groupBy('users.created_at')
+                 ->get(['roles.name AS role_name','users.*','users.id as userId']);
+        
+                // return data ke view
+                return view('users.index', compact('df_user'));
+        } else{
+            return redirect('dashboard');
         }
     }
 
@@ -100,6 +103,7 @@ class UserController extends Controller
 
     public function update($id, Request $request)
     {
+        
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
@@ -119,18 +123,18 @@ class UserController extends Controller
         $users->role_id = $request->role_id;
         $users->save();
 
-
         $details = Users_Detail::find($users->user_id);
-
+        
         $details->name = $request->name;
         $details->nik = $request->nik;
         $details->nip = $request->nip;
-        $details->phone =  $request->phone;
-        $details->gender =$request->gender;
+        $details->phone = $request->phone;
+        $details->gender = $request->gender;
         $details->address = $request->address;
         $details->institute_id = $request->institute_id;
         $details->updated_at = date('Y-m-d H:i:s');
         $details->save();
+        // dd($request->all());
 
         return redirect('/users');
     }

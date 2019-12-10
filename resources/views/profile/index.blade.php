@@ -47,7 +47,7 @@
                                                 <div class="col-md-12"> <strong>Nama Lengkap</strong>
                                                     <br>
                                                     <p class="text-muted">{{ $profil->name }}</p>
-                                                </div>
+                                                </div>                                               
                                                 <div class="col-md-12"> <strong>Telepon</strong>
                                                     <br>
                                                     <p class="text-muted">{{ $profil->phone }}</p>

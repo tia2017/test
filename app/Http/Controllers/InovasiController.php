@@ -23,7 +23,15 @@ class InovasiController extends Controller
             return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
         } else {
             $id_ins_user = Session::get('users_detail')->institute_id;
-            // dd($id_ins_user);
+            if(Session::get('role') == 2){
+                $q1 = '!=';
+                $q2 = '0';
+            }else{
+                $q1 = '=';
+                $q2 = $id_ins_user ;
+            }
+            
+            // dd($query);
             $totals = DB::table("innovations")
                 ->select(DB::raw("innovations.id,
                                         innovation_steps.id as innov_step_id,
@@ -35,20 +43,24 @@ class InovasiController extends Controller
                                         SUM(progress_persentage)/6 as persentasi"))
                 ->leftJoin('innovation_steps', 'innovations.id', '=', 'innovation_steps.innovation_id')
                 ->leftJoin('steps', 'steps.id', '=', 'innovation_steps.step_id')
-                // ->where('institute_id', '=', $id_ins_user)
+                ->where('institute_id', $q1, $q2 )
                 // ->where('progress_persentage', '!=', '100')
                 ->groupBy(['innovations.id'])
                 ->get();
 
-            // dd($totals);
+            
             $ino_steps = Innovation_step::with('innovation')
+                ->leftJoin('innovations as innov', 'innov.id', '=', 'innovation_steps.innovation_id')
+                ->where('innov.institute_id', $q1, $q2)
                 ->where('progress_persentage', '!=', '0')
                 ->where('progress_persentage', '!=', '100')
-                // ->where
                 ->groupBy('innovation_id')
                 ->get();
 
+            // dd($totals);
             $ino_steps2 = Innovation_step::with('innovation')
+                ->leftJoin('innovations as innov', 'innov.id', '=', 'innovation_steps.innovation_id')
+                ->where('innov.institute_id', $q1 , $q2)
                 ->where('progress_persentage', '=', '100')
                 ->where('step_id', '=', '6')
                 ->groupBy('innovation_id')

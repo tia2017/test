@@ -19,7 +19,8 @@ class profileController extends Controller
             ->leftJoin("users_detail", "users_detail.id", "=", "users.user_id")
             ->where('users.id', '=', $id)
             ->get(['*','users.id as userId']);
-    
+            
+            // dd($profile_user);
             return view('profile.index', compact('profile_user'));
         }
     }

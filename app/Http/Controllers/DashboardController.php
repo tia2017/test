@@ -25,9 +25,13 @@ class DashboardController extends Controller
             }else{
                 $q1 = '=';
                 $q2 = $id_ins_user ;
-            }
-
+        }
+            
+        // echo $q1."<br>";
+        // echo $q2;
+        // die();
             $ino_steps = Innovation_step::with('innovation')
+            ->leftJoin('innovations as innov', 'innov.id', '=', 'innovation_steps.innovation_id')
             ->select("*", DB::raw("SUM(progress_persentage)/6 as persentasi"))
             ->leftJoin('innovations', 'innovations.id', 'innovation_steps.innovation_id')
             ->where('institute_id', $q1, $q2 )
@@ -53,9 +57,7 @@ class DashboardController extends Controller
             $inovasi = Innovation::all();
             $jumlah_inovasi = $inovasi->count();
     
-            // MANA DIA? INI DIA! INI DIA!
-            //NOMOR 2
-    
+          
             $total = DB::table('innovation_steps')
                     ->select('innovation_id', DB::raw('SUM(progress_persentage) as total'))
                     ->groupBy('innovation_id')

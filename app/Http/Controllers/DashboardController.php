@@ -31,10 +31,9 @@ class DashboardController extends Controller
         // echo $q2;
         // die();
             $ino_steps = Innovation_step::with('innovation')
-            ->leftJoin('innovations as innov', 'innov.id', '=', 'innovation_steps.innovation_id')
             ->select("*", DB::raw("SUM(progress_persentage)/6 as persentasi"))
             ->leftJoin('innovations', 'innovations.id', 'innovation_steps.innovation_id')
-            ->where('institute_id', $q1, $q2 )
+            ->where('innovations.institute_id', $q1, $q2 )
             ->groupBy('innovation_id')
             ->get();
     

@@ -18,11 +18,23 @@ class DashboardController extends Controller
         if (!Session::get('login')) {
             return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
         } else {
+            $id_ins_user = Session::get('users_detail')->institute_id;
+            if(Session::get('role') == 2){
+                $q1 = '!=';
+                $q2 = '0';
+            }else{
+                $q1 = '=';
+                $q2 = $id_ins_user ;
+            }
+
             $ino_steps = Innovation_step::with('innovation')
             ->select("*", DB::raw("SUM(progress_persentage)/6 as persentasi"))
+            ->leftJoin('innovations', 'innovations.id', 'innovation_steps.innovation_id')
+            ->where('institute_id', $q1, $q2 )
             ->groupBy('innovation_id')
             ->get();
     
+            // dd($ino_steps);
             // print_r($ino_steps."<br>");
             // die();
     

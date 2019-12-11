@@ -18,11 +18,24 @@ class DashboardController extends Controller
         if (!Session::get('login')) {
             return redirect('/')->with('alert', 'Anda Harus Login Terlebih Dahulu !');
         } else {
+            $id_ins_user = Session::get('users_detail')->institute_id;
+            if(Session::get('role') == 2){
+                $q1 = '!=';
+                $q2 = '0';
+            }else{
+                $q1 = '=';
+                $q2 = $id_ins_user ;
+        }
+            
+        // echo $q1."<br>";
+        // echo $q2;
+        // die();
             $ino_steps = Innovation_step::with('innovation')
+            ->leftJoin('innovations as innov', 'innov.id', '=', 'innovation_steps.innovation_id')
             ->select("*", DB::raw("SUM(progress_persentage)/6 as persentasi"))
+            ->where('institute_id', $q1, $q2)
             ->groupBy('innovation_id')
             ->get();
-    
             // print_r($ino_steps."<br>");
             // die();
     
@@ -41,9 +54,7 @@ class DashboardController extends Controller
             $inovasi = Innovation::all();
             $jumlah_inovasi = $inovasi->count();
     
-            // MANA DIA? INI DIA! INI DIA!
-            //NOMOR 2
-    
+          
             $total = DB::table('innovation_steps')
                     ->select('innovation_id', DB::raw('SUM(progress_persentage) as total'))
                     ->groupBy('innovation_id')

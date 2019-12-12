@@ -67,7 +67,7 @@
                                                 @endforeach
                                             @else  
                                                 @foreach($df_institute as $institute)
-                                                <option {{ $inovasi->institute_id == $institute->id ? 'selected="selected"' : '' }} value="{{$institute->id}}">{{$institute->short_name}}</option>
+                                                <option value="{{$user_detail->institute_id}}">{{$user_detail->institute->short_name}}</option>
                                                 @endforeach
                                             @endif
                                             

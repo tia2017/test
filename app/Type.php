@@ -10,6 +10,6 @@ class Type extends Model
         'name', 'description'];
     public function innovation()
     {
-        return $this->hasMany(Innovation::class);
+        return $this->hasMany(Innovation::class, 'innovation_type_id');
     }
 }

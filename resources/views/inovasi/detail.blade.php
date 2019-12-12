@@ -187,8 +187,34 @@
                     <a href="/inovasi/edit/{{$ino_step->innovation->id}}" class="btn btn-warning pt-5 float-right">Ubah</a>
                 </div>           
                 <div class="col-lg-1">
-                    <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="btn btn-danger pt-5 float-right">Hapus</a>
+                    <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="btn btn-danger pt-5 float-right myModal" data-toggle="modal" data-target="#myModal">Hapus</a>
+                    {{-- <a href="/inovasi/hapus/{{$ino_step->innovation->id}}" class="btn btn-danger pt-5 float-right">Hapus</a> --}}
                 </div>
+
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title">Peringatan</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <p>Yakin Ingin Menghapus Data ?</p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <a href="" class="btn badge-danger">Hapus</a>
+                                <a class="btn btn-secondary" data-dismiss="modal">Batalkan</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
